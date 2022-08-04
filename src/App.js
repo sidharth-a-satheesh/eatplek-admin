@@ -4,6 +4,7 @@ import Login from "./pages/login/Login";
 import './app.scss'
 import Home from "./pages/home/Home";
 import Navbar from "./components/navbar/Navbar";
+import Hotel from "./pages/hotel/Hotel";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/admin-login" element={<Login />} />
           <Route path="/" element={<Home />} />
+          <Route path="/hotel" element={<Hotel />} />
         </Routes>
       </BrowserRouter>
     </div>

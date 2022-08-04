@@ -1,0 +1,13 @@
+.hotel-inside-main{
+    padding-top: 14vh;
+    display: grid;
+    grid-template-columns: 90%;
+    justify-content: center;
+    .hotel-inside-btn-sec{
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        column-gap: 1rem;
+    }
+
+}
