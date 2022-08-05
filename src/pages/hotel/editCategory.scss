@@ -1,0 +1,10 @@
+.edit-category-main{
+    padding-top: 20vh;
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center;
+    .add-category-main-btn{
+        border-top: solid 1px black;
+        padding-top: 1.5rem;
+    }
+}

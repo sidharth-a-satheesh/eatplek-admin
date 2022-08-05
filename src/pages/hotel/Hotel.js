@@ -75,7 +75,7 @@ const Hotel = () => {
         },
     ]
     const [addFoodPopup, setFoodPopup] = useState(false);
-    const [addCategoryPopup, setCategoryPopup] = useState(false)
+    const [addCategoryPopup, setCategoryPopup] = useState(false);
   return (
     <div className='hotel-inside-main'>
         <div className="hotel-inside-name">

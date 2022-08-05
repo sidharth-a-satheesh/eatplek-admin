@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import Navbar from "./components/navbar/Navbar";
 import Hotel from "./pages/hotel/Hotel";
 import EditCategory from "./pages/hotel/EditCategory";
+import Bill from "./components/bill/Bill";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/admin-login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/hotel" element={<Hotel />} />
+          <Route path="/invoice" element={<Bill />} />
           <Route path="/edit-category" element={<EditCategory />} />
           
         </Routes>

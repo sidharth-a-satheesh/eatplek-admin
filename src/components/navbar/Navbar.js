@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 export default function Navbar(){
     let location = useLocation();
     console.log(location.pathname);
-    if(location.pathname === "/admin-login"){
+    if(location.pathname === "/admin-login" || location.pathname === "/invoice"){
         return null;
-    }else
+    }
     return (
         <div className='nav-main'>
             <div className='nav-logo'>
@@ -22,7 +22,13 @@ export default function Navbar(){
                     <p>Home</p>
                 </Link>
                 <Link to="/">
+                    <p>Orders</p>
+                </Link>
+                <Link to="/">
                     <p>Revenue</p>
+                </Link>
+                <Link to="/">
+                    <p>Decline</p>
                 </Link>
             </div>
         </div>

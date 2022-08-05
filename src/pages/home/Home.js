@@ -12,16 +12,19 @@ import AddHotelPopup from './AddHotelPopup';
 const Home = () => {
   let hotels = [
     {
+      hotelId: 1,
       hotelName: "The Smocky Shack",
       hotelLocation: "Chengannur",
       hotelFoodType : "Arabian, Bevrages, Juices"
     },
     {
+      hotelId: 2,
       hotelName: "Maroosh",
       hotelLocation: "Varam",
       hotelFoodType : "Arabian, Biriyani"
     },
     {
+      hotelId: 3,
       hotelName: "Mayuri",
       hotelLocation: "Dharmashala",
       hotelFoodType : "North Indian Food"
@@ -36,7 +39,7 @@ const Home = () => {
       <div className="dash-items">
         {
           hotels.map((e) => (
-              <div>
+              <div key={e.hotelId}>
                 <Link to='/hotel'>
                   <DashHotels
                     name={e.hotelName}
