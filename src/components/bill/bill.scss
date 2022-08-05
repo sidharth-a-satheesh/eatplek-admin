@@ -1,5 +1,105 @@
-.bill-main-bg{
+.bill-bg{
     min-height: 100vh;
     min-width: 100%;
     background-color: rgba($color: #000000, $alpha: 0.1);
+    .bill-main{
+        display: grid;
+        grid-template-columns: 40%;
+        align-self: center;
+        justify-content: center;
+        .bill{
+            background-color: white;
+            box-shadow: 0px -4px 40px rgba(0, 0, 0, 0.15), 0px 4px 40px rgba(0, 0, 0, 0.15);
+            .bill-top{
+                display: grid;
+                grid-template-columns: 60% 40%;
+                .bill-top-details{
+                    display: grid;
+                    align-items: center;
+                    padding: 2rem;
+                    font-size: 1rem;
+                    font-weight: 100;
+                    line-height: 136.84%;
+                    .bill-bold{
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        padding-left: 0.4rem;
+                    }
+                }
+                .bill-top-heading{
+                    display: grid;
+                    align-items: center;
+                    justify-content: center;
+                    background: #042E60;
+                    border-radius: 0px 0px 0px 20px;
+                    padding: 1.5rem;
+                    font-size: 1.6rem;
+                    text-align: center;
+                    color: white;
+                    line-height: 1.2rem;
+                    font-weight: 700;
+                    letter-spacing: 0.175em;
+                }
+            }
+            .bill-middle-main{
+                display: grid;
+                justify-content: center;
+                grid-template-columns: 100%;
+                padding-top: 3rem;
+                line-height: 136.84%;
+                .bill-hotel-name{
+                    color: #042E60;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    text-align: center;
+                    padding-bottom: 0.6rem;
+                }
+                .bill-hotel-location-number{
+                    text-align: center;
+                    padding-bottom: 0.6rem;
+                }
+                .bill-dashed-hr{
+                    width: 100%;
+                    border: none;
+                    height: 2px;
+                    background: rgba(0, 0, 0, 0.14);
+                    background: repeating-linear-gradient(90deg,rgba(0, 0, 0, 0.14),rgba(0, 0, 0, 0.14) 6px,transparent 6px,transparent 12px);
+
+                }
+                .bill-middle-sub{
+                    display: grid;
+                    grid-template-columns: 85%;
+                    justify-content: center;
+                    padding-top: 2rem;
+                    .bill-item{
+                        text-align: left;
+                    }
+                    .bill-text-center{
+                        text-align: center;
+                    }
+                    .bill-total{
+                        text-align: right;
+                    }
+                    .bill-middle-sub-heading{
+                        display: grid;
+                        grid-template-columns: 40% 25% 25% 10%;
+                        font-weight: 600;
+                        line-height: 136.84%;
+                        color: #042E60;
+                    }
+                    .bill-items-hr{ 
+                        width: 100%;
+                        border-top: 1.2px solid rgba(4, 46, 96, 0.11);
+                        border: solid none none none;
+                    }
+                    .bill-middle-items{
+                        padding: 1rem 0;
+                        display: grid;
+                        grid-template-columns: 40% 25% 25% 10%;
+                    }
+                }
+            }
+        }
+        
+    }
 }

@@ -1,4 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@font-face {
+    font-family: Imported;
+    src: url('./fonts/SFUIText-Regular.ttf');
+    // src: url('./fonts/SFUIText-Bold.ttf');
+    // src: url('./fonts/SFUIText-Heavy.ttf');
+    // src: url('./fonts/SFUIText-Light.ttf');
+    // src: url('./fonts/SFUIText-Medium.ttf');
+    // src: url('./fonts/SFUIText-Semibold.ttf');
+}
+
 body{
     margin: 0;
+    outline: none;
+    font-family: Imported;
 }
