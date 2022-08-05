@@ -1,3 +1,35 @@
 .revenue-main{
-    padding: 14vh 0 6rem;
+    padding: 14vh 6rem 0;
+    .revenue-choose-date{
+        display: flex;
+        align-items: center;
+        .end-date-label{
+            padding-left: 2rem;
+        }
+        #end{
+            margin-right: 2rem;
+        }
+    }
+    
+    .revenue-text-right{
+        text-align: right;
+    }
+    .revenue-hotel-heading{
+        display: grid;
+        grid-template-columns: 1fr 4fr 4fr;
+        padding: 1rem 0;
+        font-weight: 600;
+    }
+    .revenue-hr{
+        width: 100%;
+        border-top: 1px solid black;
+        border-bottom: none;
+        margin-block: 0;
+        margin-inline: 0;
+    }
+    .revenue-hotel{
+        display: grid;
+        grid-template-columns: 1fr 4fr 4fr;
+        padding: 1rem 0;
+    }
 }

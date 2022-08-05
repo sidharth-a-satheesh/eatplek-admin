@@ -79,6 +79,10 @@ function AddHotelPopup({trigger,setTrigger}) {
               <Checkbox label={"take-away"} defaultChecked />
             </Box>
             <Box m={2}>
+              <label htmlFor="">Veg</label>
+              <Checkbox label={"veg"}  />
+            </Box>
+            <Box m={2}>
               <Button type={'submit'} variant="contained">SUBMIT</Button>
             </Box>
           </form>

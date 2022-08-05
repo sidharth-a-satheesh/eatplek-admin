@@ -11,6 +11,7 @@ const Order = () => {
 
     return (
         <div className='order-main'>
+            <h1>Orders</h1>
             <div className="order-heading">
                 <div>Sl. No.</div>
                 <div className='order-text-center'>Hotel Name</div>

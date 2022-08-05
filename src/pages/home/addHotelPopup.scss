@@ -12,10 +12,9 @@
     
     .add-hotels-popup{
         background-color: white;
-        height: 75vh;
+        min-height: 75vh;
         width: 70%;
         position: relative;
-        top: 5vh;
         padding: 2rem;
         
         box-shadow: 0px 2px 15px rgba($color: #3a3a3a, $alpha: 1.0);
