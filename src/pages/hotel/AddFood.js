@@ -42,7 +42,7 @@ const AddFood = ({trigger,setTrigger}) => {
                 type={'text'} 
                 multiline
                 rows={3}
-                required 
+                // required 
                 fullWidth 
                 id="add-food-description" 
                 label="Food Description" 

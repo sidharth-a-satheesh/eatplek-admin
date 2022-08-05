@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 
 
 export default function Navbar(){
-    let {location} = useLocation();
-    console.log(location)
-    if(location === "/admin-login"){
+    let location = useLocation();
+    console.log(location.pathname);
+    if(location.pathname === "/admin-login"){
         return null;
     }else
     return (

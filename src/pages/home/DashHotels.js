@@ -9,7 +9,6 @@ const DashHotels = ({name,foodType,location}) => {
       <div className='dash-hotel-bottom-div'>
         <div className='dash-hotel-name'>
           <h3>{name}</h3>
-          <p>15 Min</p>
         </div>
         <p>{foodType}</p>
         <p>{location}</p>
@@ -18,5 +17,4 @@ const DashHotels = ({name,foodType,location}) => {
     </div>
   )
 }
-
 export default DashHotels
