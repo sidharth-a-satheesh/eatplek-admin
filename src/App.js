@@ -9,6 +9,7 @@ import EditCategory from "./pages/hotel/EditCategory";
 import Bill from "./components/bill/Bill";
 import Order from "./pages/orders/Order";
 import Decline from "./pages/decline/Decline";
+import Revenue from "./pages/revenue/Revenue";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/invoice" element={<Bill />} />
           <Route path="/orders" element={<Order />} />
           <Route path="/decline" element={<Decline />} />
+          <Route path="/revenue" element={<Revenue />} />
           <Route path="/edit-category" element={<EditCategory />} />
           
         </Routes>
