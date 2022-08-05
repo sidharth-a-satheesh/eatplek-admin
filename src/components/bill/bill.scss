@@ -1,10 +1,13 @@
 .bill-bg{
     min-height: 100vh;
     min-width: 100%;
+    display: grid;
+    align-items: center;
     background-color: rgba($color: #000000, $alpha: 0.1);
     .bill-main{
         display: grid;
         grid-template-columns: 40%;
+        padding: 1rem 0;
         align-self: center;
         justify-content: center;
         .bill{
@@ -96,6 +99,42 @@
                         padding: 1rem 0;
                         display: grid;
                         grid-template-columns: 40% 25% 25% 10%;
+                    }
+                    .bill-middle-tax{
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 0.8rem;
+                        padding: 1rem 0 2rem 0;
+                    }
+                    .bill-total-price{
+                        text-align: right;
+                        color: #042E60;
+                        font-weight: 700;
+                        margin-bottom: 4rem;
+                    }
+                    .bill-thank-you{
+                        letter-spacing: 0.735em;
+                        padding-bottom: 2rem;
+                        color: #042E60;
+                        font-weight: 900;
+                        text-align: center;
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+            .bill-bottom-main{
+                display: grid;
+                grid-template-columns: 85%;
+                justify-content: center;
+                background-color: #042E60;
+                color: white;
+                padding: 1.5rem 0;
+                .bill-bottom{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .bill-text-bold{
+                        font-weight: 500;
                     }
                 }
             }

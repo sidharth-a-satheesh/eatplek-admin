@@ -41,6 +41,27 @@ const Bill = () => {
                             <div className='bill-text-center'>2</div>
                             <div className='bill-total'>560</div>
                         </div>
+                        <div className="bill-middle-tax">
+                            <div>Taxes and Charges</div>
+                            <div>₹ 0</div>
+                        </div>
+                        <div className="bill-total-price">
+                            Total Price: Rs 818/-
+                        </div>
+                        <div className="bill-thank-you">
+                            THANK YOU
+                        </div>
+                    </div>
+                    
+                </div>
+                <div className="bill-bottom-main">
+                    <div className="bill-bottom">
+                        <div>
+                            Billing Date: <span className="bill-text-bold">10/02/2022</span>
+                        </div>
+                        <div>
+                            Billing Time: <span className="bill-text-bold">10:00 AM</span>
+                        </div>
                     </div>
                 </div>
             </div>
