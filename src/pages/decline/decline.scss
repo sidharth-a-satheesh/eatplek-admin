@@ -1,0 +1,27 @@
+.decline-main{
+    padding: 15vh 6rem 0;
+    .declined-hr{
+        width: 100%;
+        border-top: 1px solid black;
+        border-bottom: none;
+    }
+    .declined-heading{
+        display: grid;
+        padding-top: 1rem;
+        grid-template-columns: 1fr 2.5fr 2.5fr 2fr 1fr 1fr 1fr;
+        font-weight: 600;
+    }
+    .declined-text-center{
+        text-align: center;
+    }
+    .declined-text-right{
+        text-align: right;
+    }
+    .declined-order{
+        display: grid;
+        padding: 1rem 0;
+        grid-template-columns: 1fr 2.5fr 2.5fr 2fr 1fr 1fr 1fr;
+        
+    }
+    
+}

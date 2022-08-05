@@ -24,10 +24,10 @@ export default function Navbar(){
                 <Link to="/orders">
                     <p>Orders</p>
                 </Link>
-                <Link to="/">
+                <Link to="/revenue">
                     <p>Revenue</p>
                 </Link>
-                <Link to="/">
+                <Link to="/decline">
                     <p>Decline</p>
                 </Link>
             </div>
