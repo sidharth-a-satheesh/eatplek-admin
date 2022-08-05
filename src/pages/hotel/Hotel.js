@@ -20,8 +20,8 @@ const Hotel = () => {
                     <Button onClick={()=>setFoodPopup(true)} variant="contained" color={"success"}>Add New Food</Button>
                 </div>
             </div>
-            {/* <AddCategory trigger={addCategoryPopup} setTrigger={setCategoryPopup}/>
-            <AddFood trigger={addFoodPopup} setTrigger={setFoodPopup}/> */}
+            <AddCategory trigger={addCategoryPopup} setTrigger={setCategoryPopup}/>
+            <AddFood trigger={addFoodPopup} setTrigger={setFoodPopup}/>
     </div>
   )
 }

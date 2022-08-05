@@ -9,9 +9,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
     .add-hotels-popup{
         background-color: white;
-        height: 70vh;
+        height: 75vh;
         width: 70%;
         position: relative;
         top: 5vh;
@@ -25,6 +26,10 @@
             top: 2%;
             right: 2%;
         }
-        
+        .add-hotel-username-pass{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            justify-content: center;
+        }
     }
 }

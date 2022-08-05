@@ -2,7 +2,7 @@ import  React from 'react'
 import './addHotelPopup.scss'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField'
-
+import Checkbox from '@mui/material/Checkbox'
 import Box from '@mui/material/Box'
 
 
@@ -52,18 +52,35 @@ function AddHotelPopup({trigger,setTrigger}) {
               <TextField 
                 type={'text'} 
                 required 
-                fullWidth 
-                rows={3} 
+                fullWidth
                 multiline 
                 id="add-hotel-food-type" 
                 label="Food Type" 
                 variant="outlined" 
               />
             </Box>
+            
+            <div className='add-hotel-username-pass'>
+            <Box m={2}>
+              <TextField required fullWidth id="add-hotel-username" label="Hotel User Name" variant="outlined" />
+            </Box>
+            <Box m={2}>
+              <TextField required fullWidth id="add-hotel-password" label="Hotel Password" variant="outlined" />
+            </Box>
+            </div>
+            <Box m={2}>
+              <label htmlFor="">Enter Hotel Image: </label>
+              <input required type="file" name="" id="hotel-img" />
+            </Box>
+            <Box m={2}>
+              <label htmlFor="">Dine In</label>
+              <Checkbox label={"dine-in"} defaultChecked />
+              <label htmlFor="">Take Away</label>
+              <Checkbox label={"take-away"} defaultChecked />
+            </Box>
             <Box m={2}>
               <Button type={'submit'} variant="contained">SUBMIT</Button>
             </Box>
-            <input type="image" src="" alt="" />
           </form>
         </div>
             </div>

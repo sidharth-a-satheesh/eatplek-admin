@@ -9,22 +9,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    .add-hotels-popup{
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
+    .add-food-popup{
         background-color: white;
-        height: 70vh;
-        width: 70%;
+        min-height: 75vh;
+        min-width: 70%;
         position: relative;
         top: 5vh;
         padding: 2rem;
-        
         box-shadow: 0px 2px 15px rgba($color: #3a3a3a, $alpha: 1.0);
         border-radius: 10px 10px 10px 10px;
-
-        .add-hotels-popup-close-btn{
+        .add-food-popup-close-btn{
             position: absolute;
             top: 2%;
             right: 2%;
         }
-        
+        .add-food-cost-ac-non-ac{
+            display: grid;
+            grid-template-columns: 1fr 6fr;
+            justify-content: center;
+        }
     }
 }
