@@ -19,7 +19,7 @@
         min-height: 75vh;
         min-width: 70%;
         position: relative;
-        top: 5vh;
+        // top: 5vh;
         padding: 2rem;
         box-shadow: 0px 2px 15px rgba($color: #3a3a3a, $alpha: 1.0);
         border-radius: 10px 10px 10px 10px;
@@ -34,5 +34,29 @@
             grid-template-columns: 1fr 6fr;
             justify-content: center;
         }
+        .add-food-select{
+            display: flex;
+            justify-content: space-between;
+            #food-category-selection, #food-type-selection{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                padding: 0.7rem 1.5rem;
+                background-color: white;
+                color: black;
+                font-weight: 550;
+                border-radius: 6px;
+                transition: 0.2s;
+                text-align: center;
+                border: solid 1px black;
+                cursor: pointer;
+                &:hover{
+                    background-color: #455875;
+                    color: white;
+                    border: solid 1px #455875;
+                }
+            }
+        }
+        
     }
 }

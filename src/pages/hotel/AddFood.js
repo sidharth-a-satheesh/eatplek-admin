@@ -17,26 +17,28 @@ const AddFood = ({trigger,setTrigger}) => {
         <div className="add-food-form">
           <form>
             <h1>Enter Food Details</h1>
-            <Box m={2}>
-              <label htmlFor="food-category-selection">Choose Food Category: </label>
-            <select name="food-category-selection" id="food-category-selection">
-              <option value="" disabled selected>Choose your option</option>
-              <option value="Category1">Category 1</option>
-              <option value="Category2">Category 2</option>
-              <option value="Category3">Category 3</option>
-              <option value="Category4">Category 4</option>
-              <option value="Category5">Category 5</option>
-            </select>
-            </Box>
-            <Box m={2}>
-            <label htmlFor="">Veg/Non-Veg: </label>
-            <select name="food-type-selection" id="food-type-selection">
-            <option value="" disabled selected>Choose your option</option>
-              <option value="non-veg">Non-veg</option>
-              <option value="veg">Veg</option>
-            </select>
-            
-            </Box>
+            <div className="add-food-select">
+              <Box m={2}>
+                <label htmlFor="food-category-selection">Choose Food Category: </label>
+              <select name="food-category-selection" id="food-category-selection">
+                <option value="" defaultValue={''}>Choose your option</option>
+                <option value="Category1">Category 1</option>
+                <option value="Category2">Category 2</option>
+                <option value="Category3">Category 3</option>
+                <option value="Category4">Category 4</option>
+                <option value="Category5">Category 5</option>
+              </select>
+              </Box>
+              <Box m={2}>
+              <label htmlFor="">Veg/Non-Veg: </label>
+              <select name="food-type-selection" id="food-type-selection">
+              <option value="" defaultValue={''}>Choose your option</option>
+                <option value="non-veg">Non-veg</option>
+                <option value="veg">Veg</option>
+              </select>
+              
+              </Box>
+            </div>
             <Box m={2}>
               <TextField 
                 type={'text'} 
