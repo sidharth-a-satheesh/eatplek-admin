@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import './hotel.scss'
 import Button from '@mui/material/Button'
 import AddCategory from './AddCategory';
@@ -81,15 +82,21 @@ const Hotel = () => {
             <h1>The Smocky Shack</h1>
         </div>
             <div className="hotel-inside-btn-sec">
-                <div className="hotel-inside-add-category">
-                    <Button onClick={()=>setCategoryPopup(true)} variant="contained">Add New Category</Button>
+                <div className="hotel-inside-ac-non-ac">
+                    {/* <Button onClick={()=>setCategoryPopup(true)} variant="contained">Add New Category</Button> */}
+                    <form action="">
+                        <select name="hotel-ac-selection" id="hotel-ac-selection">
+                            <option value="non-ac">Non-AC</option>
+                            <option value="ac">AC</option>
+                        </select>
+                    </form>
                 </div>
                 <div className="hotel-inside-add-food">
                     <Button onClick={()=>setFoodPopup(true)} variant="contained" color={"success"}>Add New Food</Button>
                 </div>
             </div>
             <AddCategory trigger={addCategoryPopup} setTrigger={setCategoryPopup}/>
-            <AddFood trigger={addFoodPopup} setTrigger={setFoodPopup}/>
+            <AddFood trigger={addFoodPopup} setTrigger={setFoodPopup}/> 
             <div className="flex-space-between">
                 
                 <div className='hotel-inside-food-category'>
@@ -99,14 +106,10 @@ const Hotel = () => {
                             <div key={e.id} className="fd-category" >{e.categoryName}</div>
                         )
                     }
+                    <Link to={"/edit-category"}><Button variant="contained">Edit Category</Button></Link>
                 </div>
                 <div>
-                    <form action="">
-                        <select name="hotel-ac-selection" id="hotel-ac-selection">
-                            <option value="non-ac">Non-AC</option>
-                            <option value="ac">AC</option>
-                        </select>
-                    </form>
+                    
                 </div>
             </div>
                 <div className="hotel-inside-food-section-main">
