@@ -1,15 +1,27 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import './home.scss'
 import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField'
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
 
 import Box from '@mui/material/Box'
 import DashHotels from './DashHotels';
 import AddHotelPopup from './AddHotelPopup';
+import axios from 'axios'
+
+// http://eatplek.herokuapp.com/restaurant
+
 
 
 const Home = () => {
+
+  useEffect(() => {
+  
+  }, [])
+
   let hotels = [
     {
       hotelId: 1,
@@ -30,12 +42,25 @@ const Home = () => {
       hotelFoodType : "North Indian Food"
     },
   ]
+
   const [addHotelPopup, setAddHotelPopup] = useState(false);
   return (
     <div className='home-main'>
       <div className='add-hotels-btn'>
+      <Button variant="contained">Fetch API</Button>
         <Button onClick={()=>setAddHotelPopup(true)} variant="contained">Add Hotels</Button>
       </div>
+      <FormControl>
+      <RadioGroup
+        defaultValue={'dine-in'}
+        row
+        aria-labelledby="demo-row-radio-buttons-group-label"
+        name="row-radio-buttons-group"
+      >
+        <FormControlLabel value="dine-in" control={<Radio />} label="Dine In" />
+        <FormControlLabel value="take-away" control={<Radio />} label="Take Away" />
+      </RadioGroup>
+    </FormControl>
       <div className="dash-items">
         {
           hotels.map((e) => (

@@ -8,7 +8,6 @@ const Order = () => {
     const navigateToInvoice = () =>{
         navigate("/invoice");
     }
-
     return (
         <div className='order-main'>
             <h1>Orders</h1>

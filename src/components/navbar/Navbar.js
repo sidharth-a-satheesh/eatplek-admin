@@ -8,17 +8,19 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar(){
     let location = useLocation();
-    console.log(location.pathname);
-    if(location.pathname === "/admin-login" || location.pathname === "/invoice"){
+    // console.log(location.pathname);
+    if(location.pathname === "/" || location.pathname === "/invoice"){
         return null;
     }
     return (
         <div className='nav-main'>
-            <div className='nav-logo'>
-                <img src={logo} alt="logo" />
-            </div>
+            <Link to="/home">
+                <div className='nav-logo'>
+                    <img src={logo} alt="logo" />
+                </div>
+            </Link>
             <div className='nav-items'>
-                <Link to="/">
+                <Link to="/home">
                     <p>Home</p>
                 </Link>
                 <Link to="/orders">

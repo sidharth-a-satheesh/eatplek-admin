@@ -5,6 +5,10 @@ import Button from '@mui/material/Button'
 import AddCategory from './AddCategory';
 import AddFood from './AddFood';
 import Food from './Food';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
 
 
 
@@ -84,12 +88,17 @@ const Hotel = () => {
             <div className="hotel-inside-btn-sec">
                 <div className="hotel-inside-ac-non-ac">
                     {/* <Button onClick={()=>setCategoryPopup(true)} variant="contained">Add New Category</Button> */}
-                    <form action="">
-                        <select name="hotel-ac-selection" id="hotel-ac-selection">
-                            <option value="non-ac">Non-AC</option>
-                            <option value="ac">AC</option>
-                        </select>
-                    </form>
+                    <FormControl>
+                        <RadioGroup
+                        defaultValue={"ac"}
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                        >
+                            <FormControlLabel value="ac" control={<Radio />} label="AC" />
+                            <FormControlLabel value="non-ac" control={<Radio />} label="Non-AC" />
+                        </RadioGroup>
+                    </FormControl>
                 </div>
                 <div className="hotel-inside-add-food">
                     <Button onClick={()=>setFoodPopup(true)} variant="contained" color={"success"}>Add New Food</Button>
