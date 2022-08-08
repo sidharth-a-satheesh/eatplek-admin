@@ -6,20 +6,38 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-
 import Box from '@mui/material/Box'
 import DashHotels from './DashHotels';
 import AddHotelPopup from './AddHotelPopup';
-import axios from 'axios'
+import axios from '../../components/axios/axios'
+import { baseUrl } from '../../constants/constants';
 
 // http://eatplek.herokuapp.com/restaurant
 
 
 
 const Home = () => {
+  // useEffect(() => {
+  //   fetchTasks();
+  // }, []);
+
+  // // const [tasks, setTasks] = useState([]);
+
+  // let fetchTasks = async () => {
+  //   let result = await axios.get("/restaurant");
+  //   // setTasks(result.data);
+  //   console.log(result);
+  // };
 
   useEffect(() => {
-  
+    axios.get('/restaurant',{
+      headers:{
+        "Access-Control-Allow-Origin": baseUrl,
+      }
+    }
+    ).then((response)=>{
+      console.log(response.data)
+    })
   }, [])
 
   let hotels = [
@@ -47,7 +65,7 @@ const Home = () => {
   return (
     <div className='home-main'>
       <div className='add-hotels-btn'>
-      <Button variant="contained">Fetch API</Button>
+      {/* <Button variant="contained">Fetch API</Button> */}
         <Button onClick={()=>setAddHotelPopup(true)} variant="contained">Add Hotels</Button>
       </div>
       <FormControl>
