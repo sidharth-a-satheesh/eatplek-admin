@@ -1,22 +1,63 @@
-import React from 'react'
+import React,{ useRef, useState, useEffect } from 'react'
 import './login.scss'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-  const navigate = useNavigate();
-  const navigateHome = () =>{
-    navigate('/home')
+  // const navigate = useNavigate();
+  // const navigateHome = () =>{
+  //   navigate('/home')
+  // }
+  const userRef = useRef();
+  const errRef = useRef();
+
+  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [errMsg, setErrMsg] = useState('Error');
+  const [success, setSuccess] = useState(false);
+
+  useEffect(()=>{
+    userRef.current.focus();
+  },[])
+
+  useEffect(()=>{
+    setErrMsg(''); 
+  },[user,pwd])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSuccess(true);
+    console.log(success);
   }
 
   return (
     <div className='main-login'>
       <div className="login-page">
+        
         <div className="form">
+        
           <h1>Admin Login</h1>
-          <form className="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button onClick={navigateHome}>login</button>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <input
+              type="text" 
+              placeholder="username"
+              id='username'
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e)=>setUser(e.target.value)}
+              value={user}
+              required
+            />
+            <input 
+              type="password" 
+              placeholder="password"
+              id='password'
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+            />
+            {/* <button onClick={navigateHome}>login</button> */}
+            <button>Login</button>
+            <p ref={errRef} className={errMsg? "errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
           </form>
         </div>
       </div>
