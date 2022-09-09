@@ -1,5 +1,5 @@
 import  React, { useState } from 'react'
-import './addHotelPopup.scss'
+import './editHotelPopup.scss'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField'
 import Checkbox from '@mui/material/Checkbox'
@@ -8,17 +8,17 @@ import axios from '../../components/axios/axios';
 import { baseUrl } from '../../constants/constants';
 
 
-function AddHotelPopup({trigger,setTrigger}) {
-  const [name, setName] = useState('')
-  const [location, setLocation] = useState('')
-  const [number, setNumber] = useState('')
-  const [foodType, setFoodType] = useState('')
-  const [user, setUser] = useState('')
-  const [pass, setPass] = useState('')
-  const [image, setImage] = useState('')
-  const [dineIn, setDineIn] = useState(true)
-  const [takeAway, setTakeAway] = useState(true)
-  const [veg, setVeg] = useState(false)
+function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hotelFoodType,hotelUser,hotelPass,hotelImage,hotelDineIn,hotelTakeAway,hotelVeg}) {
+  const [name, setName] = useState(hotelName)
+  const [location, setLocation] = useState(hotelLoc)
+  const [number, setNumber] = useState(hotelPhone)
+  const [foodType, setFoodType] = useState(hotelFoodType)
+  const [user, setUser] = useState(hotelUser)
+  const [pass, setPass] = useState(hotelPass)
+  const [image, setImage] = useState(hotelImage)
+  const [dineIn, setDineIn] = useState(hotelDineIn)
+  const [takeAway, setTakeAway] = useState(hotelTakeAway)
+  const [veg, setVeg] = useState(hotelVeg)
 
   const postData = (e) =>{
     e.preventDefault();
@@ -54,21 +54,20 @@ function AddHotelPopup({trigger,setTrigger}) {
 
     
     return (trigger) ? (
-        <div className='add-hotels-popup-main'>
-            <div className="add-hotels-popup">
-                <div onClick={()=>setTrigger(false)} className="add-hotels-popup-close-btn">
+        <div className='edit-hotels-popup-main'>
+            <div className="edit-hotels-popup">
+                <div onClick={()=>setTrigger(false)} className="edit-hotels-popup-close-btn">
                     <i className="fa-solid fa-xmark"></i>
                 </div>                
                 
-                <div className="add-hotel-form">
+                <div className="edit-hotel-form">
           <form  >
-            <h1>Enter Hotel Details</h1>
+            <h1>Edit Hotel Details</h1>
             <Box m={2}>
               <TextField 
                 type={'text'} 
                 required 
                 fullWidth 
-                id="add-hotel-name" 
                 label="Hotel Name" 
                 variant="outlined" 
                 value={name}
@@ -80,7 +79,6 @@ function AddHotelPopup({trigger,setTrigger}) {
                 type={'text'} 
                 required 
                 fullWidth 
-                id="add-hotel-location" 
                 label="Location" 
                 variant="outlined" 
                 value={location}
@@ -92,7 +90,6 @@ function AddHotelPopup({trigger,setTrigger}) {
                 type={'number'} 
                 required 
                 fullWidth 
-                id="add-hotel-number" 
                 label="Phone Number" 
                 variant="outlined" 
                 value={number}
@@ -105,7 +102,6 @@ function AddHotelPopup({trigger,setTrigger}) {
                 required 
                 fullWidth
                 multiline 
-                id="add-hotel-food-type" 
                 label="Food Type" 
                 variant="outlined" 
                 value={foodType}
@@ -118,7 +114,6 @@ function AddHotelPopup({trigger,setTrigger}) {
               <TextField 
                 required 
                 fullWidth 
-                id="add-hotel-username" 
                 label="Hotel User Name" 
                 variant="outlined" 
                 value={user}
@@ -130,7 +125,6 @@ function AddHotelPopup({trigger,setTrigger}) {
                 required 
                 fullWidth 
                 type={'password'} 
-                id="add-hotel-password" 
                 label="Hotel Password" 
                 variant="outlined"
                 value={pass}
@@ -139,18 +133,18 @@ function AddHotelPopup({trigger,setTrigger}) {
             </Box>
             </div>
             <Box m={2}>
-              <label htmlFor="">Enter Hotel Image: </label>
-              <input required type="file" name="" value={image} id="hotel-img" onChange={(e)=>setImage(e.target.value)} />
+              <label>Enter Hotel Image: </label>
+              <input required type="file" name="" value={image} onChange={(e)=>setImage(e.target.value)} />
             </Box>
             <Box m={2}>
-              <label htmlFor="">Dine In</label>
+              <label>Dine In</label>
               <Checkbox label={"dine-in"} value={dineIn} onChange={(e)=>setDineIn(e.target.value)}/>
-              <label htmlFor="">Take Away</label>
+              <label>Take Away</label>
               <Checkbox label={"take-away"} value={takeAway} onChange={(e)=>setTakeAway(e.target.value)}/>
             </Box>
             <Box m={2}>
-              <label htmlFor="">Veg</label>
-              <Checkbox label={"veg"}  value={veg} onChange={(e)=>setVeg(e.target.value)}/>
+              <label>Veg</label>
+              <Checkbox label={"veg"} value={veg} onChange={(e)=>setVeg(e.target.value)}/>
             </Box>
             <Box m={2}>
               <Button type={'submit'} onClick={postData} variant="contained">SUBMIT</Button>
@@ -162,4 +156,4 @@ function AddHotelPopup({trigger,setTrigger}) {
     ) : null;
 }
 
-export default AddHotelPopup 
+export default EditHotelPopup 

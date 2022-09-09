@@ -9,8 +9,9 @@ import FormControl from '@mui/material/FormControl';
 import Box from '@mui/material/Box'
 import DashHotels from './DashHotels';
 import AddHotelPopup from './AddHotelPopup';
-import axios from '../../components/axios/axios'
+import axios from '../../components/axios/axios';
 import { baseUrl } from '../../constants/constants';
+import EditHotelPopup from './EditHotelPopup';
 
 // http://eatplek.herokuapp.com/restaurant
 
@@ -28,40 +29,35 @@ const Home = () => {
   //   // setTasks(result.data);
   //   console.log(result);
   // };
-
+  const [duplicateData, setDuplicateData] = useState([])
+  const [data, setData] = useState([])
   useEffect(() => {
-    axios.get('/restaurant',{
-      headers:{
-        "Access-Control-Allow-Origin": baseUrl,
-      }
-    }
-    ).then((response)=>{
-      console.log(response.data)
+    axios.get(`${baseUrl}/restaurant`).then((response)=>{
+      console.log(response.data.restaurants)
+      setData(response.data.restaurants)
+      setDuplicateData(response.data.restaurants)
     })
-  }, [])
+  },[])
+  const viewDineIn = () =>{
+    const result = duplicateData.filter((e)=>{
+      return e.dine_in===true
+    })
+    setData(result)
+  }
+  const viewTakeAway = () =>{
+    const result = duplicateData.filter((e)=>{
+      return e.take_away===true
+    })
+    setData(result)
+  }
 
-  let hotels = [
-    {
-      hotelId: 1,
-      hotelName: "The Smocky Shack",
-      hotelLocation: "Chengannur",
-      hotelFoodType : "Arabian, Bevrages, Juices"
-    },
-    {
-      hotelId: 2,
-      hotelName: "Maroosh",
-      hotelLocation: "Varam",
-      hotelFoodType : "Arabian, Biriyani"
-    },
-    {
-      hotelId: 3,
-      hotelName: "Mayuri",
-      hotelLocation: "Dharmashala",
-      hotelFoodType : "North Indian Food"
-    },
-  ]
 
   const [addHotelPopup, setAddHotelPopup] = useState(false);
+  const [editHotelPopup, setEditHotelPopup] = useState(false);
+
+  const update = (id) =>{
+    console.log(id)
+  }
   return (
     <div className='home-main'>
       <div className='add-hotels-btn'>
@@ -75,32 +71,48 @@ const Home = () => {
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
       >
-        <FormControlLabel value="dine-in" control={<Radio />} label="Dine In" />
-        <FormControlLabel value="take-away" control={<Radio />} label="Take Away" />
+        <FormControlLabel value="dine-in" control={<Radio />} label="Dine In" onClick={viewDineIn} />
+        <FormControlLabel value="take-away" control={<Radio />} label="Take Away" onClick={viewTakeAway} />
       </RadioGroup>
     </FormControl>
       <div className="dash-items">
         {
-          hotels.map((e) => (
-              <div key={e.hotelId}>
+          data.map((e)=>(
+            
+            <div key={e.id}>
+              
                 <Link to='/hotel'>
                   <DashHotels
-                    name={e.hotelName}
-                    location={e.hotelLocation}
-                    foodType={e.hotelFoodType}
+                    name={e.name}
+                    location={e.location}
+                    foodType={e.type}
+                    hotel_img={e.image}
                   />
                 </Link>
                 <div className="hotel-main-btns">
                   <Box m={2}>
-                    <Button onClick={()=>setAddHotelPopup(true)}  variant="contained">EDIT HOTEL</Button>
+                    {/* <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button> */}
+                    <Button onClick={()=>update(e.id)}  variant="contained">EDIT HOTEL</Button>
+                    <EditHotelPopup id={e.id} trigger={editHotelPopup} setTrigger={setEditHotelPopup}
+                      hotelDineIn={e.dine_in}
+                      hotelFoodType={e.type}
+                      hotelName={e.name}
+                      hotelLoc={e.location}
+                      hotelPhone={e.phone}
+                      hotelUser={e.username}
+                      hotelPass={e.password}
+                      hotelImage={e.image}
+                      hotelTakeAway={e.take_away}
+                      // hotelVeg={e.veg}
+
+                    />
                   </Box>
                   <Box m={2}>
                     <Button variant="contained" color="error">DELETE HOTEL</Button>
                   </Box>
                 </div>
               </div>
-            )
-          )
+          ))
         }
       </div>
       {/* <div className='add-hotels-popup-main'>
@@ -108,10 +120,7 @@ const Home = () => {
           
         </div>
       </div> */}
-      <AddHotelPopup trigger={addHotelPopup} setTrigger={setAddHotelPopup}>
-        
-        
-      </AddHotelPopup>
+      <AddHotelPopup trigger={addHotelPopup} setTrigger={setAddHotelPopup} />
     </div>
   )
 }

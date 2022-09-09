@@ -1,8 +1,8 @@
 import React from 'react'
-import hotel_img from '../../assets/hotel.png'
+// import hotel_img from '../../assets/hotel.png'
 
 
-const DashHotels = ({name,foodType,location}) => {
+const DashHotels = ({name,foodType,location,hotel_img}) => {
   return (
     <div className='dash-hotel-main'>
       <img className='dash-hotel-img' src={hotel_img} alt="" />
