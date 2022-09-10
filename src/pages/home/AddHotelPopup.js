@@ -51,9 +51,9 @@ function AddHotelPopup({trigger,setTrigger}) {
     console.log(e.target.files[0])
     setImage(e.target.value)
     const formData = new FormData();
-    formData.append("file",rawImage)
+    formData.append("data",rawImage)
     axios.post(`${baseUrl}/upload`,{
-      "image": formData
+      formData
     },{
       headers:{
       "Token":`${API_KEY}`,
