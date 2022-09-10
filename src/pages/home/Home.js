@@ -19,17 +19,6 @@ import EditHotelPopup from './EditHotelPopup';
 
 
 const Home = () => {
-  // useEffect(() => {
-  //   fetchTasks();
-  // }, []);
-
-  // // const [tasks, setTasks] = useState([]);
-
-  // let fetchTasks = async () => {
-  //   let result = await axios.get("/restaurant");
-  //   // setTasks(result.data);
-  //   console.log(result);
-  // };
   const [duplicateData, setDuplicateData] = useState([])
   const [data, setData] = useState([])
   useEffect(() => {
@@ -56,9 +45,9 @@ const Home = () => {
   const [addHotelPopup, setAddHotelPopup] = useState(false);
   const [editHotelPopup, setEditHotelPopup] = useState(false);
 
-  const update = (id) =>{
-    console.log(id)
-  }
+  // const update = (id) =>{
+  //   console.log(id)
+  // }
 
   const deleteHotel = (id) =>{
     console.log(id) 
@@ -107,16 +96,16 @@ const Home = () => {
                     {/* <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button> */}
                     <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button>
                     <EditHotelPopup id={e.id} trigger={editHotelPopup} setTrigger={setEditHotelPopup}
-                      // hotelDineIn={e.dine_in}
-                      // hotelFoodType={e.type}
-                      // hotelName={e.name}
-                      // hotelLoc={e.location}
-                      // hotelPhone={e.phone}
-                      // hotelUser={e.username}
-                      // hotelPass={e.password}
-                      // hotelImage={e.image}
-                      // hotelTakeAway={e.take_away}
-                      // hotelVeg={e.veg}
+                      hotelDineIn={e.dine_in}
+                      hotelFoodType={e.type}
+                      hotelName={e.name}
+                      hotelLoc={e.location}
+                      hotelPhone={e.phone}
+                      hotelUser={e.username}
+                      hotelPass={e.password}
+                      hotelImage={e.image}
+                      hotelTakeAway={e.take_away}
+                      hotelVeg={e.veg}
 
                     />
                   </Box>

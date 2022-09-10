@@ -1,4 +1,4 @@
-import  React, { useState } from 'react'
+import  React, { useEffect, useState } from 'react'
 import './editHotelPopup.scss'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField'
@@ -71,9 +71,9 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
                 fullWidth 
                 label="Hotel Name" 
                 variant="outlined" 
-                defaultValue={name}
+                // defaultValue={name}
                 value={name}
-                onChange={(e)=>setName(e.target.value)}
+                // onChange={(e)=>setName(e.target.value)}
               />
             </Box>
             <Box m={2}>
@@ -83,9 +83,9 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
                 fullWidth 
                 label="Location" 
                 variant="outlined" 
-                defaultValue={location}
+                // defaultValue={location}
                 value={location}
-                onChange={(e)=>setLocation(e.target.value)}
+                // onChange={(e)=>setLocation(e.target.value)}
               />
             </Box>
             <Box m={2}>
@@ -96,7 +96,7 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
                 label="Phone Number" 
                 variant="outlined" 
                 value={number}
-                onChange={(e)=>setNumber(e.target.value)}
+                // onChange={(e)=>setNumber(e.target.value)}
               />
             </Box>
             <Box m={2}>
@@ -141,13 +141,13 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
             </Box>
             <Box m={2}>
               <label>Dine In</label>
-              <Checkbox label={"dine-in"} value={dineIn} onChange={(e)=>setDineIn(e.target.checked)}/>
+              <Checkbox label={"dine-in"} checked={dineIn} onChange={(e)=>setDineIn(e.target.checked)}/>
               <label>Take Away</label>
-              <Checkbox label={"take-away"} value={takeAway} onChange={(e)=>setTakeAway(e.target.checked)}/>
+              <Checkbox label={"take-away"} checked={takeAway} onChange={(e)=>setTakeAway(e.target.checked)}/>
             </Box>
             <Box m={2}>
               <label>Veg</label>
-              <Checkbox label={"veg"} value={veg} onChange={(e)=>setVeg(e.target.checked)}/>
+              <Checkbox label={"veg"} checked={veg} onChange={(e)=>setVeg(e.target.checked)}/>
             </Box>
             <Box m={2}>
               <Button type={'submit'} variant="contained">SUBMIT</Button>
