@@ -1,2 +1,2 @@
-export const baseUrl = 'http://eatplek.herokuapp.com';
+export const baseUrl = 'https://eatplek.herokuapp.com';
 export const API_KEY = '';

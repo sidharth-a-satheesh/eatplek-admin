@@ -22,33 +22,35 @@ function AddHotelPopup({trigger,setTrigger}) {
 
   const postData = (e) =>{
     e.preventDefault();
-    console.log(name)
-    console.log(location)
-    console.log(number)
-    console.log(foodType)
-    console.log(user)
-    console.log(pass)
+    // console.log(name)
+    // console.log(location)
+    // console.log(number)
+    // console.log(foodType)
+    // console.log(user)
+    // console.log(pass)
     console.log(image)
-    console.log(dineIn)
-    console.log(takeAway)
-    console.log(veg)
-    // axios.post(`${baseUrl}/restaurant`,{
-    //   "name": "Test",
-    //   "location": "Testing",
-    //   "phone": "1245678903",
-    //   "type": "Test,Chinese,Fried Chicken",
-    //   "image": "https://static.remove.bg/remove-bg-web/37843dee2531e43723b012aa78be4b91cc211fef/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg",
-    //   "dine_in": false,
-    //   "take_away": true,
-    //   "username": "testtt",
-    //   "password": "testtt123"
-    // },{
-    //   headers:{
-    //   "Content-Type":"application/json",
-    //   "Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTk2OTA4Mzd9.nYDEhq6zhTfdFposxla3BdxaEnT5zM0_J6K30RC6_Ws",
-    // }}).then((response)=>{
-    //   console.log(response.data.restaurants)
-    // })
+    // console.log(dineIn)
+    // console.log(takeAway)
+    // console.log(veg)
+    axios.post(`${baseUrl}/restaurant/`,{
+      "name": "Test",
+      "location": "Testing",
+      "phone": "1245678903",
+      "type": "Test,Chinese,Fried Chicken",
+      "image": "https://static.remove.bg/remove-bg-web/37843dee2531e43723b012aa78be4b91cc211fef/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg",
+      "dine_in": false,
+      "take_away": true,
+      "username": "testtt",
+      "password": "testtt123"
+    },{
+      headers:{
+      "Content-Type":"application/json",
+      // "withCredentials": false,
+      // "Access-Control-Allow-Credentials":true,
+      "Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTk2OTA4Mzd9.nYDEhq6zhTfdFposxla3BdxaEnT5zM0_J6K30RC6_Ws",
+    }}).then((response)=>{
+      console.log(response.data.restaurants)
+    })
   }
 
 
@@ -144,9 +146,9 @@ function AddHotelPopup({trigger,setTrigger}) {
             </Box>
             <Box m={2}>
               <label htmlFor="">Dine In</label>
-              <Checkbox label={"dine-in"} value={dineIn} onChange={(e)=>setDineIn(e.target.value)}/>
+              <Checkbox label={"dine-in"} value={dineIn} defaultChecked onChange={(e)=>setDineIn(e.target.value)}/>
               <label htmlFor="">Take Away</label>
-              <Checkbox label={"take-away"} value={takeAway} onChange={(e)=>setTakeAway(e.target.value)}/>
+              <Checkbox label={"take-away"} value={takeAway} defaultChecked onChange={(e)=>setTakeAway(e.target.value)}/>
             </Box>
             <Box m={2}>
               <label htmlFor="">Veg</label>
