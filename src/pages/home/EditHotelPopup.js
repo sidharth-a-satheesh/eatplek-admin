@@ -81,7 +81,7 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
                 fullWidth 
                 label="Location" 
                 variant="outlined" 
-                value={location}
+                defaultValue={location}
                 onChange={(e)=>setLocation(e.target.value)}
               />
             </Box>

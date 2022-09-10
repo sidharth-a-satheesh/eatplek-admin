@@ -10,8 +10,9 @@ import Box from '@mui/material/Box'
 import DashHotels from './DashHotels';
 import AddHotelPopup from './AddHotelPopup';
 import axios from '../../components/axios/axios';
-import { baseUrl } from '../../constants/constants';
+import { baseUrl, API_KEY } from '../../constants/constants';
 import EditHotelPopup from './EditHotelPopup';
+
 
 // http://eatplek.herokuapp.com/restaurant
 
@@ -58,10 +59,22 @@ const Home = () => {
   const update = (id) =>{
     console.log(id)
   }
+
+  const deleteHotel = (id) =>{
+    console.log(id) 
+    axios.delete(`${baseUrl}/restaurant/${id}`,{
+      headers:{
+      "Token":`${API_KEY}`,
+    }}).then((response)=>{
+      console.log("Deleted")
+      console.log(response)
+      window.location.reload(true)
+    })
+  }
+    
   return (
     <div className='home-main'>
       <div className='add-hotels-btn'>
-      {/* <Button variant="contained">Fetch API</Button> */}
         <Button onClick={()=>setAddHotelPopup(true)} variant="contained">Add Hotels</Button>
       </div>
       <FormControl>
@@ -108,7 +121,7 @@ const Home = () => {
                     />
                   </Box>
                   <Box m={2}>
-                    <Button variant="contained" color="error">DELETE HOTEL</Button>
+                    <Button variant="contained" onClick={()=>deleteHotel(e.id)} color="error">DELETE HOTEL</Button>
                   </Box>
                 </div>
               </div>

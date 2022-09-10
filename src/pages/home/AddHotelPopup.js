@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField'
 import Checkbox from '@mui/material/Checkbox'
 import Box from '@mui/material/Box'
 import axios from '../../components/axios/axios';
-import { baseUrl } from '../../constants/constants';
+import { baseUrl, API_KEY } from '../../constants/constants';
 
 
 function AddHotelPopup({trigger,setTrigger}) {
@@ -16,40 +16,49 @@ function AddHotelPopup({trigger,setTrigger}) {
   const [user, setUser] = useState('')
   const [pass, setPass] = useState('')
   const [image, setImage] = useState('')
+  const [rawImage, setRawImage] = useState(null)
   const [dineIn, setDineIn] = useState(true)
   const [takeAway, setTakeAway] = useState(true)
   const [veg, setVeg] = useState(false)
 
   const postData = (e) =>{
-    e.preventDefault();
-    // console.log(name)
-    // console.log(location)
-    // console.log(number)
-    // console.log(foodType)
-    // console.log(user)
-    // console.log(pass)
     console.log(image)
-    // console.log(dineIn)
-    // console.log(takeAway)
-    // console.log(veg)
-    axios.post(`${baseUrl}/restaurant/`,{
-      "name": "Test",
-      "location": "Testing",
-      "phone": "1245678903",
-      "type": "Test,Chinese,Fried Chicken",
-      "image": "https://static.remove.bg/remove-bg-web/37843dee2531e43723b012aa78be4b91cc211fef/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg",
-      "dine_in": false,
-      "take_away": true,
-      "username": "testtt",
-      "password": "testtt123"
+    e.preventDefault()
+
+    axios.post(`${baseUrl}/restaurant`,{
+      "name": `${name}`,
+      "location": `${location}`,
+      "phone": `${number}`,
+      "type": `${foodType}`,
+      "image": `${image}`,
+      "dine_in": `${dineIn}`,
+      "take_away": `${takeAway}`,
+      "username": `${user}`,
+      "password": `${pass}`,
     },{
       headers:{
       "Content-Type":"application/json",
-      // "withCredentials": false,
-      // "Access-Control-Allow-Credentials":true,
-      "Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTk2OTA4Mzd9.nYDEhq6zhTfdFposxla3BdxaEnT5zM0_J6K30RC6_Ws",
+      "Token":`${API_KEY}`,
     }}).then((response)=>{
+      console.log("Restaurant Added Successfully")
       console.log(response.data.restaurants)
+      window.location.reload(true)
+    })
+  }
+
+  const handleImage = (e) =>{
+    setRawImage(e.target.files[0])
+    console.log(e.target.files[0])
+    setImage(e.target.value)
+    const formData = new FormData();
+    formData.append("file",rawImage)
+    axios.post(`${baseUrl}/upload`,{
+      "image": formData
+    },{
+      headers:{
+      "Token":`${API_KEY}`,
+    }}).then((response)=>{
+      console.log(response)
     })
   }
 
@@ -63,7 +72,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 </div>                
                 
                 <div className="add-hotel-form">
-          <form  >
+          <form onSubmit={postData} >
             <h1>Enter Hotel Details</h1>
             <Box m={2}>
               <TextField 
@@ -142,7 +151,7 @@ function AddHotelPopup({trigger,setTrigger}) {
             </div>
             <Box m={2}>
               <label htmlFor="">Enter Hotel Image: </label>
-              <input required type="file" name="" value={image} id="hotel-img" onChange={(e)=>setImage(e.target.value)} />
+              <input required type="file" name="" value={image} id="hotel-img" onChange={handleImage} />
             </Box>
             <Box m={2}>
               <label htmlFor="">Dine In</label>
@@ -155,7 +164,7 @@ function AddHotelPopup({trigger,setTrigger}) {
               <Checkbox label={"veg"}  value={veg} onChange={(e)=>setVeg(e.target.value)}/>
             </Box>
             <Box m={2}>
-              <Button type={'submit'} onClick={postData} variant="contained">SUBMIT</Button>
+              <Button type={'submit'} variant="contained">SUBMIT</Button>
             </Box>
           </form>
         </div>
