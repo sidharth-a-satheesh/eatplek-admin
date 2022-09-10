@@ -105,17 +105,17 @@ const Home = () => {
                 <div className="hotel-main-btns">
                   <Box m={2}>
                     {/* <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button> */}
-                    <Button onClick={()=>update(e.id)}  variant="contained">EDIT HOTEL</Button>
+                    <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button>
                     <EditHotelPopup id={e.id} trigger={editHotelPopup} setTrigger={setEditHotelPopup}
-                      hotelDineIn={e.dine_in}
-                      hotelFoodType={e.type}
-                      hotelName={e.name}
-                      hotelLoc={e.location}
-                      hotelPhone={e.phone}
-                      hotelUser={e.username}
-                      hotelPass={e.password}
-                      hotelImage={e.image}
-                      hotelTakeAway={e.take_away}
+                      // hotelDineIn={e.dine_in}
+                      // hotelFoodType={e.type}
+                      // hotelName={e.name}
+                      // hotelLoc={e.location}
+                      // hotelPhone={e.phone}
+                      // hotelUser={e.username}
+                      // hotelPass={e.password}
+                      // hotelImage={e.image}
+                      // hotelTakeAway={e.take_away}
                       // hotelVeg={e.veg}
 
                     />

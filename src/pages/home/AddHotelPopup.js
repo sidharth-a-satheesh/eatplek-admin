@@ -16,13 +16,17 @@ function AddHotelPopup({trigger,setTrigger}) {
   const [user, setUser] = useState('')
   const [pass, setPass] = useState('')
   const [image, setImage] = useState('')
-  const [rawImage, setRawImage] = useState(null)
-  const [dineIn, setDineIn] = useState(true)
-  const [takeAway, setTakeAway] = useState(true)
+  const [dineIn, setDineIn] = useState(false)
+  const [takeAway, setTakeAway] = useState(false)
   const [veg, setVeg] = useState(false)
+  const [fakeImage, setFakeImage] = useState('')
 
   const postData = (e) =>{
     console.log(image)
+    console.log(dineIn)
+    console.log(takeAway)
+    console.log(veg)
+    console.log(`${veg}`)
     e.preventDefault()
 
     axios.post(`${baseUrl}/restaurant`,{
@@ -31,10 +35,11 @@ function AddHotelPopup({trigger,setTrigger}) {
       "phone": `${number}`,
       "type": `${foodType}`,
       "image": `${image}`,
-      "dine_in": `${dineIn}`,
-      "take_away": `${takeAway}`,
+      "dine_in": Boolean({dineIn}),
+      "take_away": Boolean({takeAway}),
       "username": `${user}`,
       "password": `${pass}`,
+      "isveg": Boolean({veg})
     },{
       headers:{
       "Content-Type":"application/json",
@@ -47,21 +52,40 @@ function AddHotelPopup({trigger,setTrigger}) {
   }
 
   const handleImage = (e) =>{
-    setRawImage(e.target.files[0])
-    console.log(e.target.files[0])
-    setImage(e.target.value)
+    // let files = e.target.files[0]
+    // setRawImage({files})
     const formData = new FormData();
-    formData.append("data",rawImage)
-    axios.post(`${baseUrl}/upload`,{
-      formData
-    },{
+    formData.append("file",e.target.files[0])
+    
+    // console.log(rawImage)
+    // setImage(e.target.value)
+    
+    axios.post(`${baseUrl}/upload`,
+      formData,{
       headers:{
       "Token":`${API_KEY}`,
+      "Content-Type":"multipart/form-data",
     }}).then((response)=>{
-      console.log(response)
+      console.log(response.data.link)
+      setImage(response.data.link)
+    }).catch((res)=>{
+      console.log(res)
     })
+    
+    setFakeImage(e.target.value)
   }
-
+    const handleDineIn = (e) =>{
+      setDineIn(e.target.checked)
+      console.log("Dine In : "+ e.target.checked)
+    }
+    const handleVeg = (e) =>{
+      setVeg(e.target.checked)
+      console.log("Veg : "+ e.target.checked)
+    }
+    const handleTakeAway = (e) =>{
+      setTakeAway(e.target.checked)
+      console.log("Take Away : "+ e.target.checked)
+    }
 
     
     return (trigger) ? (
@@ -151,17 +175,17 @@ function AddHotelPopup({trigger,setTrigger}) {
             </div>
             <Box m={2}>
               <label htmlFor="">Enter Hotel Image: </label>
-              <input required type="file" name="" value={image} id="hotel-img" onChange={handleImage} />
+              <input required type="file" name="" value={fakeImage} id="hotel-img" onChange={handleImage} />
             </Box>
             <Box m={2}>
               <label htmlFor="">Dine In</label>
-              <Checkbox label={"dine-in"} value={dineIn} defaultChecked onChange={(e)=>setDineIn(e.target.value)}/>
+              <Checkbox label={"dine-in"} checked={dineIn} onChange={handleDineIn}/>
               <label htmlFor="">Take Away</label>
-              <Checkbox label={"take-away"} value={takeAway} defaultChecked onChange={(e)=>setTakeAway(e.target.value)}/>
+              <Checkbox label={"take-away"} checked={takeAway} onChange={handleTakeAway}/>
             </Box>
             <Box m={2}>
               <label htmlFor="">Veg</label>
-              <Checkbox label={"veg"}  value={veg} onChange={(e)=>setVeg(e.target.value)}/>
+              <Checkbox label={"veg"}  checked={veg} onChange={handleVeg}/>
             </Box>
             <Box m={2}>
               <Button type={'submit'} variant="contained">SUBMIT</Button>

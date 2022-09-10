@@ -4,8 +4,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField'
 import Checkbox from '@mui/material/Checkbox'
 import Box from '@mui/material/Box'
-import axios from '../../components/axios/axios';
-import { baseUrl } from '../../constants/constants';
+// import axios from '../../components/axios/axios';
+// import { baseUrl } from '../../constants/constants';
 
 
 function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hotelFoodType,hotelUser,hotelPass,hotelImage,hotelDineIn,hotelTakeAway,hotelVeg}) {
@@ -20,8 +20,9 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
   const [takeAway, setTakeAway] = useState(hotelTakeAway)
   const [veg, setVeg] = useState(hotelVeg)
 
-  const postData = (e) =>{
+  const updateData = (e) =>{
     e.preventDefault();
+    console.log(id)
     console.log(name)
     console.log(location)
     console.log(number)
@@ -61,7 +62,7 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
                 </div>                
                 
                 <div className="edit-hotel-form">
-          <form  >
+          <form onSubmit={updateData} >
             <h1>Edit Hotel Details</h1>
             <Box m={2}>
               <TextField 
@@ -70,6 +71,7 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
                 fullWidth 
                 label="Hotel Name" 
                 variant="outlined" 
+                defaultValue={name}
                 value={name}
                 onChange={(e)=>setName(e.target.value)}
               />
@@ -82,6 +84,7 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
                 label="Location" 
                 variant="outlined" 
                 defaultValue={location}
+                value={location}
                 onChange={(e)=>setLocation(e.target.value)}
               />
             </Box>
@@ -138,16 +141,16 @@ function EditHotelPopup({id,trigger,setTrigger,hotelName,hotelLoc,hotelPhone,hot
             </Box>
             <Box m={2}>
               <label>Dine In</label>
-              <Checkbox label={"dine-in"} value={dineIn} onChange={(e)=>setDineIn(e.target.value)}/>
+              <Checkbox label={"dine-in"} value={dineIn} onChange={(e)=>setDineIn(e.target.checked)}/>
               <label>Take Away</label>
-              <Checkbox label={"take-away"} value={takeAway} onChange={(e)=>setTakeAway(e.target.value)}/>
+              <Checkbox label={"take-away"} value={takeAway} onChange={(e)=>setTakeAway(e.target.checked)}/>
             </Box>
             <Box m={2}>
               <label>Veg</label>
-              <Checkbox label={"veg"} value={veg} onChange={(e)=>setVeg(e.target.value)}/>
+              <Checkbox label={"veg"} value={veg} onChange={(e)=>setVeg(e.target.checked)}/>
             </Box>
             <Box m={2}>
-              <Button type={'submit'} onClick={postData} variant="contained">SUBMIT</Button>
+              <Button type={'submit'} variant="contained">SUBMIT</Button>
             </Box>
           </form>
         </div>
