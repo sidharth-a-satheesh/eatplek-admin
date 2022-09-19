@@ -6,6 +6,7 @@ import Checkbox from '@mui/material/Checkbox'
 import Box from '@mui/material/Box'
 import axios from '../../components/axios/axios';
 import { baseUrl, API_KEY } from '../../constants/constants';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 
 function AddHotelPopup({trigger,setTrigger}) {
@@ -178,10 +179,34 @@ function AddHotelPopup({trigger,setTrigger}) {
               <input required type="file" name="" value={fakeImage} id="hotel-img" onChange={handleImage} />
             </Box>
             <Box m={2}>
-              <label htmlFor="">Dine In</label>
-              <Checkbox label={"dine-in"} checked={dineIn} onChange={handleDineIn}/>
-              <label htmlFor="">Take Away</label>
-              <Checkbox label={"take-away"} checked={takeAway} onChange={handleTakeAway}/>
+              Choose Working Days:  
+              <label> Mon </label>
+              <Checkbox/>
+              <label>Tue </label>
+              <Checkbox/>
+              <label>Wed </label>
+              <Checkbox/>
+              <label>Thurs </label>
+              <Checkbox/>
+              <label>Fri </label>
+              <Checkbox/>
+              <label>Sat </label>
+              <Checkbox/>
+              <label>Sun </label>
+              <Checkbox/>
+            </Box>
+            <Box>
+              <Box m={2}>
+                <label htmlFor="">Dine In</label>
+                <Checkbox label={"dine-in"} checked={dineIn} onChange={handleDineIn}/>
+                <label htmlFor="">Take Away</label>
+                <Checkbox label={"take-away"} checked={takeAway} onChange={handleTakeAway}/>
+              
+                <label> Opening Time: </label>
+                <input type="time" />
+                <label> Closing Time: </label>
+                <input type="time" />
+              </Box>
             </Box>
             <Box m={2}>
               <label htmlFor="">Veg</label>
