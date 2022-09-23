@@ -10,6 +10,8 @@ import Bill from "./components/bill/Bill";
 import Order from "./pages/orders/Order";
 import Decline from "./pages/decline/Decline";
 import Revenue from "./pages/revenue/Revenue";
+import ForgotPass from "./pages/login/ForgotPass";
+import ResetPass from "./pages/login/ResetPass";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/decline" element={<Decline />} />
           <Route path="/revenue" element={<Revenue />} />
           <Route path="/edit-category" element={<EditCategory />} />
+          <Route path="/forgot" element={<ForgotPass />} />
+          <Route path="/reset" element={<ResetPass />} />
           
         </Routes>
       </BrowserRouter>
