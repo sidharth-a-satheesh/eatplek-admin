@@ -12,6 +12,7 @@ import AddHotelPopup from './AddHotelPopup';
 import axios from '../../components/axios/axios';
 import { baseUrl, API_KEY } from '../../constants/constants';
 import EditHotelPopup from './EditHotelPopup';
+import DeleteHotelPopUp from './DeleteHotelPopUp';
 
 
 // http://eatplek.herokuapp.com/restaurant
@@ -44,22 +45,18 @@ const Home = () => {
 
   const [addHotelPopup, setAddHotelPopup] = useState(false);
   const [editHotelPopup, setEditHotelPopup] = useState(false);
+  const [deleteHotelPopup, setDeleteHotelPopup] = useState(false);
+  const [deleteHotelId, setDeleteHotelId] = useState('');
 
   // const update = (id) =>{
   //   console.log(id)
   // }
 
-  const deleteHotel = (id) =>{
-    console.log(id) 
-    axios.delete(`${baseUrl}/restaurant/${id}`,{
-      headers:{
-      "Token":`${API_KEY}`,
-    }}).then((response)=>{
-      console.log("Deleted")
-      console.log(response)
-      window.location.reload(true)
-    })
-  }
+
+  const deletehotel = (id) => {
+    setDeleteHotelPopup(true);
+    setDeleteHotelId(id);
+  } 
     
   return (
     <div className='home-main'>
@@ -95,22 +92,10 @@ const Home = () => {
                   <Box m={2}>
                     {/* <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button> */}
                     <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button>
-                    <EditHotelPopup id={e.id} trigger={editHotelPopup} setTrigger={setEditHotelPopup}
-                      hotelDineIn={e.dine_in}
-                      hotelFoodType={e.type}
-                      hotelName={e.name}
-                      hotelLoc={e.location}
-                      hotelPhone={e.phone}
-                      hotelUser={e.username}
-                      hotelPass={e.password}
-                      hotelImage={e.image}
-                      hotelTakeAway={e.take_away}
-                      hotelVeg={e.veg}
-
-                    />
+                    
                   </Box>
                   <Box m={2}>
-                    <Button variant="contained" onClick={()=>deleteHotel(e.id)} color="error">DELETE HOTEL</Button>
+                    <Button variant="contained" onClick={()=>deletehotel(e.id)} color="error">DELETE HOTEL</Button>
                   </Box>
                 </div>
               </div>
@@ -122,6 +107,8 @@ const Home = () => {
           
         </div>
       </div> */}
+      <EditHotelPopup trigger={editHotelPopup} setTrigger={setEditHotelPopup} />
+      <DeleteHotelPopUp id={deleteHotelId} trigger={deleteHotelPopup} setTrigger={setDeleteHotelPopup}  />
       <AddHotelPopup trigger={addHotelPopup} setTrigger={setAddHotelPopup} />
     </div>
   )

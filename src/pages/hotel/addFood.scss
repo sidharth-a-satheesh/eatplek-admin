@@ -35,8 +35,8 @@
             justify-content: center;
         }
         .add-food-select{
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             #food-category-selection, #food-type-selection{
                 -webkit-appearance: none;
                 -moz-appearance: none;
