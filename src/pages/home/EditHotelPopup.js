@@ -38,15 +38,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 variant="outlined" 
               />
             </Box>
-            <Box m={2}>
-              <TextField
-                type={'number'} 
-                required 
-                fullWidth 
-                label="Phone Number" 
-                variant="outlined" 
-              />
-            </Box>
+            
             <Box m={2}>
               <TextField 
                 type={'text'} 
@@ -57,8 +49,27 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 variant="outlined" 
               />
             </Box>
-            
-            <div className='add-hotel-username-pass'>
+            <div className='edit-hotel-username-pass'>
+            <Box m={2}>
+              <TextField
+                type={'number'} 
+                required 
+                fullWidth 
+                label="Phone Number" 
+                variant="outlined" 
+              />
+            </Box>
+            <Box m={2}>
+              <TextField
+                type={'email'} 
+                required 
+                fullWidth 
+                label="Email" 
+                variant="outlined" 
+              />
+            </Box>
+            </div>
+            <div className='edit-hotel-username-pass'>
             <Box m={2}>
               <TextField 
                 required 

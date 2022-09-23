@@ -6,7 +6,6 @@ import Checkbox from '@mui/material/Checkbox'
 import Box from '@mui/material/Box'
 import axios from '../../components/axios/axios';
 import { baseUrl, API_KEY } from '../../constants/constants';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 
 function AddHotelPopup({trigger,setTrigger}) {
@@ -17,6 +16,7 @@ function AddHotelPopup({trigger,setTrigger}) {
   const [user, setUser] = useState('')
   const [pass, setPass] = useState('')
   const [image, setImage] = useState('')
+  const [email, setEmail] = useState('')
   const [dineIn, setDineIn] = useState(false)
   const [takeAway, setTakeAway] = useState(false)
   const [veg, setVeg] = useState(false)
@@ -124,18 +124,6 @@ function AddHotelPopup({trigger,setTrigger}) {
               />
             </Box>
             <Box m={2}>
-              <TextField
-                type={'number'} 
-                required 
-                fullWidth 
-                id="add-hotel-number" 
-                label="Phone Number" 
-                variant="outlined" 
-                value={number}
-                onChange={(e)=>setNumber(e.target.value)}
-              />
-            </Box>
-            <Box m={2}>
               <TextField 
                 type={'text'} 
                 required 
@@ -148,31 +136,59 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setFoodType(e.target.value)}
               />
             </Box>
+            <div className='add-hotel-username-pass'>
+
+            <Box m={2}>
+              <TextField
+                type={'number'} 
+                required 
+                fullWidth 
+                id="add-hotel-number" 
+                label="Phone Number" 
+                variant="outlined" 
+                value={number}
+                onChange={(e)=>setNumber(e.target.value)}
+              />
+            </Box>
+            <Box m={2}>
+              <TextField
+                type={'email'} 
+                required 
+                fullWidth 
+                id="add-hotel-email" 
+                label="Email" 
+                variant="outlined" 
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+              />
+            </Box>
+            </div>
+            
             
             <div className='add-hotel-username-pass'>
-            <Box m={2}>
-              <TextField 
-                required 
-                fullWidth 
-                id="add-hotel-username" 
-                label="Hotel User Name" 
-                variant="outlined" 
-                value={user}
-                onChange={(e)=>setUser(e.target.value)}
-              />
-            </Box>
-            <Box m={2}>
-              <TextField 
-                required 
-                fullWidth 
-                type={'password'} 
-                id="add-hotel-password" 
-                label="Hotel Password" 
-                variant="outlined"
-                value={pass}
-                onChange={(e)=>setPass(e.target.value)} 
-              />
-            </Box>
+              <Box m={2}>
+                <TextField 
+                  required 
+                  fullWidth 
+                  id="add-hotel-username" 
+                  label="Hotel User Name" 
+                  variant="outlined" 
+                  value={user}
+                  onChange={(e)=>setUser(e.target.value)}
+                />
+              </Box>
+              <Box m={2}>
+                <TextField 
+                  required 
+                  fullWidth 
+                  type={'password'} 
+                  id="add-hotel-password" 
+                  label="Hotel Password" 
+                  variant="outlined"
+                  value={pass}
+                  onChange={(e)=>setPass(e.target.value)} 
+                />
+              </Box>
             </div>
             <Box m={2}>
               <label htmlFor="">Enter Hotel Image: </label>
