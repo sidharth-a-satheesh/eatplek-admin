@@ -5,10 +5,13 @@ import Button from '@mui/material/Button'
 import AddCategory from './AddCategory';
 import AddFood from './AddFood';
 import Food from './Food';
+import { Box } from '@mui/material';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import DeleteFoodPopUp from './DeleteFoodPopUp';
+import EditFoodPopup from './EditFoodPopup'
 
 
 
@@ -79,6 +82,8 @@ const Hotel = () => {
         },
     ]
     const [addFoodPopup, setFoodPopup] = useState(false);
+    const [editFoodPopup, setEditFoodPopup] = useState(false);
+    const [deleteFoodPopup, setDeleteFoodPopup] = useState(false);
     const [addCategoryPopup, setCategoryPopup] = useState(false);
   return (
     <div className='hotel-inside-main'>
@@ -121,26 +126,69 @@ const Hotel = () => {
                     
                 </div>
             </div>
-                <div className="hotel-inside-food-section-main">
+                {/* <div className="hotel-inside-food-section-main">
                     {
-                        foodCategory.map((e)=>
+                        foodCategory.map((e)=>(
                         <div key={e.id} className="hotel-inside-food-section">
                             {e.food.map((a)=>
-                                <Food
-                                    key={a.food_id}
-                                    name={a.foodName}
-                                    cost={a.foodCost}
-                                    description={a.description}
-                                    imgPath={a.imagePath}
-                                />
+                                <div key={a.food_id}>
+                                    <Food
+                                        name={a.foodName}
+                                        cost={a.foodCost}
+                                        description={a.description}
+                                        imgPath={a.imagePath}
+                                    />
+                                    <div className="food-main-btns">
+                                        <Box m={2}>
+                                            <Button onClick={()=>setEditFoodPopup(true)}  variant="contained">EDIT FOOD</Button>
+                                            
+                                        </Box>
+                                        <Box m={2}>
+                                            <Button variant="contained" onClick={()=>setDeleteFoodPopup(true)} color="error">DELETE FOOD</Button>
+                                        </Box>
+                                    </div>
+                                    
+                                </div>
                             )}
                         </div>
                     
-                        )
+                        ))
                     }
+                </div> */}
+                <div className="hotel-inside-food-section-main">
+                <div className="hotel-inside-food-section">
+                    {
+                        foodCategory.map((e)=>(
+                        
+                            e.food.map((a)=>(
+                                <div key={a.food_id}>
+                                    <Food
+                                        name={a.foodName}
+                                        cost={a.foodCost}
+                                        description={a.description}
+                                        imgPath={a.imagePath}
+                                    />
+                                    <div className="food-main-btns">
+                                        <Box m={1}>
+                                            <Button size='small' onClick={()=>setEditFoodPopup(true)}  variant="contained">EDIT FOOD</Button>
+                                            
+                                        </Box>
+                                        <Box m={1}>
+                                            <Button size='small' variant="contained" onClick={()=>setDeleteFoodPopup(true)} color="error">DELETE FOOD</Button>
+                                        </Box>
+                                    </div>
+                                    
+                                </div>
+                            ))
+                        
+                    
+                        ))
+                    }
+                    </div>
                 </div>
-            
-    </div>
+            <DeleteFoodPopUp trigger={deleteFoodPopup} setTrigger={setDeleteFoodPopup} />
+            <EditFoodPopup trigger={editFoodPopup} setTrigger={setEditFoodPopup} />
+        </div>
   )
 }
 

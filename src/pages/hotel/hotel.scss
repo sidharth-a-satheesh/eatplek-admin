@@ -58,13 +58,32 @@
             }
         }
     }
+    // .hotel-inside-food-section-main{
+    //     margin: 2rem 0;
+    //     .hotel-inside-food-section{
+    //         display: grid;
+    //         justify-content: center;
+    //         grid-template-columns: repeat(4,1fr);
+    //         column-gap: 1.5rem;
+    //         .food-main-btns{
+    //             display: flex;
+    //             justify-content: space-between;
+    //             margin-bottom: 1.5rem;
+    //         }
+    //     }
+    // }
     .hotel-inside-food-section-main{
         margin: 2rem 0;
         .hotel-inside-food-section{
             display: grid;
             justify-content: center;
-            grid-template-columns: repeat(4,1fr);
+            grid-template-columns: repeat(5,1fr);
             column-gap: 1.5rem;
+            .food-main-btns{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 1.5rem;
+            }
         }
     }
 
