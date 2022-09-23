@@ -22,28 +22,18 @@ function EditHotelPopup({id,trigger,setTrigger}) {
         <form>
           <h1>Edit Food Details</h1>
           <div className="add-food-select">
-              {/* <label htmlFor="food-category-selection">Choose Food Category: </label>
-            <select name="food-category-selection" id="food-category-selection">
-              <option value="" defaultValue={''}>Choose your option</option>
-              <option value="Category1">Category 1</option>
-              <option value="Category2">Category 2</option>
-              <option value="Category3">Category 3</option>
-              <option value="Category4">Category 4</option>
-              <option value="Category5">Category 5</option>
-            </select> */}
-            <Box ml={2} fullWidth>
+
               <FormControl>
-                {/* <InputLabel id="choose-catogory">Food Category</InputLabel> */}
+                <InputLabel id="choose-catogory">Food Category</InputLabel>
                   <Select
-                    // labelId="choose-catogory"
+                    labelId="choose-catogory"
                     id="demo-choose-catogory"
                     label="Category"
                   >
                   <MenuItem>Ten</MenuItem>
                 </Select>
               </FormControl>
-            </Box>
-            <Box mr={2} fullWidth>
+
               <FormControl>
               <InputLabel id="choose-veg-or-non">Veg/Non-Veg</InputLabel>
               <Select
@@ -51,19 +41,12 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 id="demo-simple-select"
                 label="Veg/Non-Veg"
               >
-                <MenuItem>Ten</MenuItem>
+                <MenuItem>Veg</MenuItem>
+                <MenuItem>Non-Veg</MenuItem>
               </Select>
               </FormControl>
-            </Box>
-            {/* <Box m={2}>
-            <label htmlFor="">Veg/Non-Veg: </label>
-            <select name="food-type-selection" id="food-type-selection">
-            <option value="" defaultValue={''}>Choose your option</option>
-              <option value="non-veg">Non-veg</option>
-              <option value="veg">Veg</option>
-            </select>
-            
-            </Box> */}
+
+
           </div>
           <Box m={2}>
             <TextField 

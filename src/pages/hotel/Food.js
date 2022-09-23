@@ -9,9 +9,11 @@ const Food = ({name,cost,description,imgPath}) => {
   return (
     <div className='food-details-main'>
         <div className='food-img-main'><img className='food-image' src={image} alt="" /></div>
-        <h2>{name}</h2>
-        <h2 style={{color: "navy"}}>Rs. {cost}</h2>
-        {readMore ? description : description.substring(0,50) + "..."}
+        <div class="food-name-main">
+          <div className='food-name'>{name}</div>
+          <div style={{color: "navy"}}>Rs. {cost}</div>
+        </div>
+        <div class="food-description">{readMore ? description : description.substring(0,45) + "..."}</div>
             <button className="read-more-btn" onClick={toggleBtn}>
               {readMore ? "Read Less" : "Read More"}
             </button>
