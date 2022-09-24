@@ -12,6 +12,7 @@ import Decline from "./pages/decline/Decline";
 import Revenue from "./pages/revenue/Revenue";
 import ForgotPass from "./pages/login/ForgotPass";
 import ResetPass from "./pages/login/ResetPass";
+import Messages from "./pages/messages/Messages";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           <Route path="/edit-category" element={<EditCategory />} />
           <Route path="/forgot" element={<ForgotPass />} />
           <Route path="/reset" element={<ResetPass />} />
-          
+          <Route path="/messages" element={<Messages />} />
         </Routes>
       </BrowserRouter>
     </div>

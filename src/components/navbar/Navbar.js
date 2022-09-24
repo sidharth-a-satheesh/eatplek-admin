@@ -32,6 +32,9 @@ export default function Navbar(){
                 <Link to="/decline">
                     <p>Decline</p>
                 </Link>
+                <Link to="/messages">
+                    <p>Messages</p>
+                </Link>
             </div>
         </div>
     );
