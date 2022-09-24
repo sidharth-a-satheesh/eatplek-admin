@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route element={<AdminProtectedRoutes />}>
             <Route path="/home" element={<Home />} />
-            <Route path="/hotel" element={<Hotel />} />
+            <Route path="/hotel/:id" element={<Hotel />} />
             <Route path="/invoice" element={<Bill />} />
             <Route path="/orders" element={<Order />} />
             <Route path="/decline" element={<Decline />} />

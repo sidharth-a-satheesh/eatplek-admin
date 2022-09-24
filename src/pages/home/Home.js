@@ -92,7 +92,7 @@ const Home = () => {
       <div className="dash-items">
         {data.map((e) => (
           <div key={e.id}>
-            <Link to="/hotel">
+            <Link to={`/hotel/${e.id}`}>
               <DashHotels
                 name={e.name}
                 location={e.location}
