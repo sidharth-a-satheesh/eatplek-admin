@@ -1,6 +1,7 @@
 import React,{ useRef, useState, useEffect } from 'react'
 import './login.scss'
-// import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Box } from '@mui/material'
 
 const Login = () => {
   // const navigate = useNavigate();
@@ -58,6 +59,9 @@ const Login = () => {
             <button>Login</button>
             <p ref={errRef} className={errMsg? "errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
           </form>
+          <Box mt={1} display="flex" justifyContent="flex-end">
+            <Link to="/forgot">Forgot pass?</Link>
+          </Box>
         </div>
       </div>
     </div>
