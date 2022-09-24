@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 import DashHotels from "./DashHotels";
 import AddHotelPopup from "./AddHotelPopup";
-import { baseUrl, API_KEY } from "../../constants/constants";
+// import { baseUrl, API_KEY } from "../../constants/constants";
 import EditHotelPopup from "./EditHotelPopup";
 import DeleteHotelPopUp from "./DeleteHotelPopUp";
 import apis from "../../components/axios/axios";

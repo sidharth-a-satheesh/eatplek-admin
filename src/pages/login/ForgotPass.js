@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 const ForgotPass = () => {
     const navigate = useNavigate();
-    const navigateToSignUp=()=>{
-        navigate('/signup')
-    }
+    // const navigateToSignUp=()=>{
+    //     navigate('/signup')
+    // }
     const navigateToLogin=()=>{
         navigate('/')
     }
