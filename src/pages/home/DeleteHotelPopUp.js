@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./deleteHotelPopUp.scss";
 import { Button, Box } from "@mui/material";
 import apis from "../../components/axios/axios";
 
 const DeleteHotelPopUp = ({ id, trigger, setTrigger }) => {
+  const [success, setSuccess] = useState(false);
+
   const deleteHotel = (id) => {
+    setSuccess(true);
     console.log(id);
     apis
       .delete(`restaurant/${id}`, {
@@ -18,6 +21,7 @@ const DeleteHotelPopUp = ({ id, trigger, setTrigger }) => {
         window.location.reload(true);
       });
   };
+
   return trigger ? (
     <div className="delete-hotels-popup-main">
       <div className="delete-hotels-popup">
@@ -28,14 +32,14 @@ const DeleteHotelPopUp = ({ id, trigger, setTrigger }) => {
           <i className="fa-solid fa-xmark"></i>
         </div>
         <div className="delete-hotels-sub">
-          <div>Are you sure you want to delete this hotel</div>
+          <div>Are you sure you want to delete this hotel?</div>
           <Box display="flex" justifyContent="center" m={3}>
             <Button
               onClick={() => deleteHotel(id)}
               variant="contained"
               color="error"
             >
-              Confirm Delete
+              {success ? "Deleting..." : "Confirm Delete"}
             </Button>
           </Box>
         </div>
