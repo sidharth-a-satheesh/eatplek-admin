@@ -99,7 +99,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 <div className="add-hotel-form">
           <form onSubmit={postData} >
             <h1>Enter Hotel Details</h1>
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 type={'text'} 
                 required 
@@ -111,7 +111,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setName(e.target.value)}
               />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField
                 type={'text'} 
                 required 
@@ -123,7 +123,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setLocation(e.target.value)}
               />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 type={'text'} 
                 required 
@@ -138,7 +138,7 @@ function AddHotelPopup({trigger,setTrigger}) {
             </Box>
             <div className='add-hotel-username-pass'>
 
-            <Box m={2}>
+            <Box m={1}>
               <TextField
                 type={'number'} 
                 required 
@@ -150,7 +150,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setNumber(e.target.value)}
               />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField
                 type={'email'} 
                 required 
@@ -162,11 +162,8 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setEmail(e.target.value)}
               />
             </Box>
-            </div>
             
-            
-            <div className='add-hotel-username-pass'>
-              <Box m={2}>
+              <Box m={1}>
                 <TextField 
                   required 
                   fullWidth 
@@ -177,7 +174,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                   onChange={(e)=>setUser(e.target.value)}
                 />
               </Box>
-              <Box m={2}>
+              <Box m={1}>
                 <TextField 
                   required 
                   fullWidth 
@@ -189,12 +186,23 @@ function AddHotelPopup({trigger,setTrigger}) {
                   onChange={(e)=>setPass(e.target.value)} 
                 />
               </Box>
-            </div>
-            <Box m={2}>
+            
+            <Box m={1}>
               <label htmlFor="">Enter Hotel Image: </label>
               <input required type="file" name="" value={fakeImage} id="hotel-img" onChange={handleImage} />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
+                <TextField 
+                  required 
+                  fullWidth 
+                  type={'number'} 
+                  id="add-hotel-count" 
+                  label="Total Guest Count" 
+                  variant="outlined"
+                />
+              </Box>
+            </div>
+            <Box ml={1}>
               Choose Working Days:  
               <label> Mon </label>
               <Checkbox/>
@@ -212,7 +220,7 @@ function AddHotelPopup({trigger,setTrigger}) {
               <Checkbox/>
             </Box>
             <Box>
-              <Box m={2}>
+              <Box ml={1}>
                 <label htmlFor="">Dine In</label>
                 <Checkbox label={"dine-in"} checked={dineIn} onChange={handleDineIn}/>
                 <label htmlFor="">Take Away</label>
@@ -224,11 +232,11 @@ function AddHotelPopup({trigger,setTrigger}) {
                 <input type="time" />
               </Box>
             </Box>
-            <Box m={2}>
+            <Box ml={1}>
               <label htmlFor="">Veg</label>
               <Checkbox label={"veg"}  checked={veg} onChange={handleVeg}/>
             </Box>
-            <Box m={2}>
+            <Box ml={1}>
               <Button type={'submit'} variant="contained">SUBMIT</Button>
             </Box>
           </form>

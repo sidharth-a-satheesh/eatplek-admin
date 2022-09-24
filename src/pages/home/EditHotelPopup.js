@@ -1,4 +1,4 @@
-import  React, { useEffect, useState } from 'react'
+import  React from 'react'
 import './editHotelPopup.scss'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField'
@@ -20,7 +20,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 <div className="edit-hotel-form">
           <form>
             <h1>Edit Hotel Details</h1>
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 type={'text'} 
                 required 
@@ -29,7 +29,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 variant="outlined" 
               />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField
                 type={'text'} 
                 required 
@@ -39,7 +39,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
               />
             </Box>
             
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 type={'text'} 
                 required 
@@ -50,7 +50,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
               />
             </Box>
             <div className='edit-hotel-username-pass'>
-            <Box m={2}>
+            <Box m={1}>
               <TextField
                 type={'number'} 
                 required 
@@ -59,7 +59,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 variant="outlined" 
               />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField
                 type={'email'} 
                 required 
@@ -68,9 +68,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 variant="outlined" 
               />
             </Box>
-            </div>
-            <div className='edit-hotel-username-pass'>
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 required 
                 fullWidth 
@@ -78,7 +76,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 variant="outlined" 
               />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 required 
                 fullWidth 
@@ -87,12 +85,23 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 variant="outlined"
               />
             </Box>
-            </div>
-            <Box m={2}>
+            
+            <Box m={1}>
               <label>Enter Hotel Image: </label>
               <input required type="file" name="" />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
+                <TextField 
+                  required 
+                  fullWidth 
+                  type={'number'} 
+                  id="add-hotel-count" 
+                  label="Total Guest Count" 
+                  variant="outlined"
+                />
+              </Box>
+            </div>
+            <Box ml={1}>
               Choose Working Days:  
               <label> Mon </label>
               <Checkbox/>
@@ -110,7 +119,7 @@ function EditHotelPopup({id,trigger,setTrigger}) {
               <Checkbox/>
             </Box>
             <Box>
-              <Box m={2}>
+              <Box ml={1}>
                 <label htmlFor="">Dine In</label>
                 <Checkbox label={"dine-in"}/>
                 <label htmlFor="">Take Away</label>
@@ -122,11 +131,11 @@ function EditHotelPopup({id,trigger,setTrigger}) {
                 <input type="time" />
               </Box>
             </Box>
-            <Box m={2}>
+            <Box ml={1}>
               <label>Veg</label>
               <Checkbox label={"veg"}/>
             </Box>
-            <Box m={2}>
+            <Box ml={1}>
               <Button type={'submit'} variant="contained">SUBMIT</Button>
             </Box>
           </form>
