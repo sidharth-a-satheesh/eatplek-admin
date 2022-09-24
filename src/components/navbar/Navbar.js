@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 export default function Navbar(){
     let location = useLocation();
     // console.log(location.pathname);
-    if(location.pathname === "/" || location.pathname === "/invoice"){
+    if(location.pathname === "/" || location.pathname === "/invoice"|| location.pathname === "/reset" || location.pathname === "/forgot" ){
         return null;
     }
     return (

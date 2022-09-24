@@ -1,4 +1,4 @@
-.edit-hotels-popup-main{
+.delete-food-popup-main{
     top: 0;
     left: 0;
     min-height: 100vh;
@@ -9,24 +9,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    .edit-hotels-popup{
+    .delete-food-popup{
         background-color: white;
-        min-height: 75vh;
-        width: 70%;
+        min-height: 15vh;
+        width: 30%;
         position: relative;
         padding: 1rem 2rem;
         box-shadow: 0px 2px 15px rgba($color: #3a3a3a, $alpha: 1.0);
         border-radius: 10px 10px 10px 10px;
-        .edit-hotels-popup-close-btn{
+        .delete-food-popup-close-btn{
             font-size: 2rem;
             position: absolute;
             top: 2%;
             right: 2%;
         }
-        .edit-hotel-username-pass{
+        .delete-food-sub{
             display: grid;
-            grid-template-columns: repeat(2,1fr);
             justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
         }
     }
 }

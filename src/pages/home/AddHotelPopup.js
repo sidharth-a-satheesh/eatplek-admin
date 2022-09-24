@@ -16,6 +16,7 @@ function AddHotelPopup({trigger,setTrigger}) {
   const [user, setUser] = useState('')
   const [pass, setPass] = useState('')
   const [image, setImage] = useState('')
+  const [email, setEmail] = useState('')
   const [dineIn, setDineIn] = useState(false)
   const [takeAway, setTakeAway] = useState(false)
   const [veg, setVeg] = useState(false)
@@ -98,7 +99,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 <div className="add-hotel-form">
           <form onSubmit={postData} >
             <h1>Enter Hotel Details</h1>
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 type={'text'} 
                 required 
@@ -110,7 +111,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setName(e.target.value)}
               />
             </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField
                 type={'text'} 
                 required 
@@ -122,19 +123,7 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setLocation(e.target.value)}
               />
             </Box>
-            <Box m={2}>
-              <TextField
-                type={'number'} 
-                required 
-                fullWidth 
-                id="add-hotel-number" 
-                label="Phone Number" 
-                variant="outlined" 
-                value={number}
-                onChange={(e)=>setNumber(e.target.value)}
-              />
-            </Box>
-            <Box m={2}>
+            <Box m={1}>
               <TextField 
                 type={'text'} 
                 required 
@@ -147,47 +136,107 @@ function AddHotelPopup({trigger,setTrigger}) {
                 onChange={(e)=>setFoodType(e.target.value)}
               />
             </Box>
-            
             <div className='add-hotel-username-pass'>
-            <Box m={2}>
-              <TextField 
+
+            <Box m={1}>
+              <TextField
+                type={'number'} 
                 required 
                 fullWidth 
-                id="add-hotel-username" 
-                label="Hotel User Name" 
+                id="add-hotel-number" 
+                label="Phone Number" 
                 variant="outlined" 
-                value={user}
-                onChange={(e)=>setUser(e.target.value)}
+                value={number}
+                onChange={(e)=>setNumber(e.target.value)}
               />
             </Box>
-            <Box m={2}>
-              <TextField 
+            <Box m={1}>
+              <TextField
+                type={'email'} 
                 required 
                 fullWidth 
-                type={'password'} 
-                id="add-hotel-password" 
-                label="Hotel Password" 
-                variant="outlined"
-                value={pass}
-                onChange={(e)=>setPass(e.target.value)} 
+                id="add-hotel-email" 
+                label="Email" 
+                variant="outlined" 
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </Box>
-            </div>
-            <Box m={2}>
+            
+              <Box m={1}>
+                <TextField 
+                  required 
+                  fullWidth 
+                  id="add-hotel-username" 
+                  label="Hotel User Name" 
+                  variant="outlined" 
+                  value={user}
+                  onChange={(e)=>setUser(e.target.value)}
+                />
+              </Box>
+              <Box m={1}>
+                <TextField 
+                  required 
+                  fullWidth 
+                  type={'password'} 
+                  id="add-hotel-password" 
+                  label="Hotel Password" 
+                  variant="outlined"
+                  value={pass}
+                  onChange={(e)=>setPass(e.target.value)} 
+                />
+              </Box>
+            
+            <Box m={1}>
               <label htmlFor="">Enter Hotel Image: </label>
               <input required type="file" name="" value={fakeImage} id="hotel-img" onChange={handleImage} />
             </Box>
-            <Box m={2}>
-              <label htmlFor="">Dine In</label>
-              <Checkbox label={"dine-in"} checked={dineIn} onChange={handleDineIn}/>
-              <label htmlFor="">Take Away</label>
-              <Checkbox label={"take-away"} checked={takeAway} onChange={handleTakeAway}/>
+            <Box m={1}>
+                <TextField 
+                  required 
+                  fullWidth 
+                  type={'number'} 
+                  id="add-hotel-count" 
+                  label="Total Guest Count" 
+                  variant="outlined"
+                />
+              </Box>
+            </div>
+            <Box ml={1}>
+              Choose Working Days:  
+              <label> Mon </label>
+              <Checkbox/>
+              <label>Tue </label>
+              <Checkbox/>
+              <label>Wed </label>
+              <Checkbox/>
+              <label>Thurs </label>
+              <Checkbox/>
+              <label>Fri </label>
+              <Checkbox/>
+              <label>Sat </label>
+              <Checkbox/>
+              <label>Sun </label>
+              <Checkbox/>
             </Box>
-            <Box m={2}>
+            <Box>
+              <Box ml={1}>
+                <label htmlFor="">Dine In</label>
+                <Checkbox label={"dine-in"} checked={dineIn} onChange={handleDineIn}/>
+                <label htmlFor="">Take Away</label>
+                <Checkbox label={"take-away"} checked={takeAway} onChange={handleTakeAway}/>
+              
+                <label> Opening Time: </label>
+                <input type="time" />
+                <label> Closing Time: </label>
+                <input type="time" />
+              </Box>
+            </Box>
+            <Box ml={1}>
               <label htmlFor="">Veg</label>
               <Checkbox label={"veg"}  checked={veg} onChange={handleVeg}/>
             </Box>
-            <Box m={2}>
+            <Box ml={1}>
               <Button type={'submit'} variant="contained">SUBMIT</Button>
             </Box>
           </form>

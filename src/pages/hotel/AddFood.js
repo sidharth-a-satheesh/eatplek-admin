@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField'
 import Checkbox from '@mui/material/Checkbox'
 import Box from '@mui/material/Box'
+import { Select, FormControl, InputLabel } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
 
 const AddFood = ({trigger,setTrigger}) => {
 
@@ -18,26 +20,29 @@ const AddFood = ({trigger,setTrigger}) => {
           <form>
             <h1>Enter Food Details</h1>
             <div className="add-food-select">
-              <Box m={2}>
-                <label htmlFor="food-category-selection">Choose Food Category: </label>
-              <select name="food-category-selection" id="food-category-selection">
-                <option value="" defaultValue={''}>Choose your option</option>
-                <option value="Category1">Category 1</option>
-                <option value="Category2">Category 2</option>
-                <option value="Category3">Category 3</option>
-                <option value="Category4">Category 4</option>
-                <option value="Category5">Category 5</option>
-              </select>
-              </Box>
-              <Box m={2}>
-              <label htmlFor="">Veg/Non-Veg: </label>
-              <select name="food-type-selection" id="food-type-selection">
-              <option value="" defaultValue={''}>Choose your option</option>
-                <option value="non-veg">Non-veg</option>
-                <option value="veg">Veg</option>
-              </select>
-              
-              </Box>
+                <FormControl>
+                  <InputLabel id="choose-catogory">Food Category</InputLabel>
+                    <Select
+                      labelId="choose-catogory"
+                      id="demo-choose-catogory"
+                      label="Category"
+                    >
+                    <MenuItem>Ten</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl>
+                  <InputLabel id="choose-veg-or-non">Veg/Non-Veg</InputLabel>
+                  <Select
+                    fullWidth
+                    labelId="choose-veg-or-non"
+                    id="demo-choose-veg"
+                    label="Veg/Non-Veg"
+                  >
+                    <MenuItem>Veg</MenuItem>
+                    <MenuItem>Non-Veg</MenuItem>
+                  </Select>
+                </FormControl>
+
             </div>
             <Box m={2}>
               <TextField 
