@@ -2,7 +2,6 @@ import React from 'react'
 import './messages.scss'
 
 import IndividualMsg from './IndividualMsg'
-import DeleteMsgPopUp from './DeleteMsgPopUp'
 
 
 const Messages = () => {

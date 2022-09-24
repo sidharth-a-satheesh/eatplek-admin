@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Paper, Button } from '@mui/material'
+import { Paper } from '@mui/material'
 import './messages.scss'
 import DeleteMsgPopUp from './DeleteMsgPopUp';
 
