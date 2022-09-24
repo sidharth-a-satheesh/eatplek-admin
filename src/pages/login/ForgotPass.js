@@ -11,7 +11,7 @@ const ForgotPass = () => {
         navigate('/signup')
     }
     const navigateToLogin=()=>{
-        navigate('/login')
+        navigate('/')
     }
     const navigateToResetPass=()=>{
         navigate('/reset')

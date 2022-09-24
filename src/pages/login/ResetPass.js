@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const ResetPass = () => {
     const navigate = useNavigate();
     const navigateToLogIn = () =>{
-        navigate('/login')
+        navigate('/')
     }
     // const [passMatch, setPassMatch] = useState(true)
     return (
