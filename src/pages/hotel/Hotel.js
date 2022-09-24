@@ -28,6 +28,8 @@ const Hotel = () => {
   let [filteredFoodItems, setFilteredFoodItems] = useState([]);
   let [restaurant, setRestaurant] = useState(null);
   let [selectedCtgryId, setSelectedCtgryId] = useState("All");
+  let [ac, setAc] = useState(false);
+  let [delId, setDelId] = useState(null);
 
   let fetchRestaurant = async () => {
     let { data } = await apis.get("restaurant/" + id);
@@ -53,6 +55,11 @@ const Hotel = () => {
     else setFilteredFoodItems(foodItems.filter((i) => i.category_id === id));
   };
 
+  let onDelete = async (id) => {
+    setDelId(id);
+    setDeleteFoodPopup(true);
+  };
+
   const [addFoodPopup, setFoodPopup] = useState(false);
   const [editFoodPopup, setEditFoodPopup] = useState(false);
   const [deleteFoodPopup, setDeleteFoodPopup] = useState(false);
@@ -69,16 +76,22 @@ const Hotel = () => {
           {/* <Button onClick={()=>setCategoryPopup(true)} variant="contained">Add New Category</Button> */}
           <FormControl>
             <RadioGroup
-              defaultValue={"ac"}
+              defaultValue={ac ? "ac" : "non-ac"}
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="ac" control={<Radio />} label="AC" />
               <FormControlLabel
                 value="non-ac"
                 control={<Radio />}
                 label="Non-AC"
+                onClick={() => setAc(false)}
+              />
+              <FormControlLabel
+                value="ac"
+                control={<Radio />}
+                label="AC"
+                onClick={() => setAc(true)}
               />
             </RadioGroup>
           </FormControl>
@@ -122,38 +135,44 @@ const Hotel = () => {
         <div></div>
       </div>
       {/* <div className="hotel-inside-food-section-main">
-                    {
-                        foodCategory.map((e)=>(
-                        <div key={e.id} className="hotel-inside-food-section">
-                            {e.food.map((a)=>
-                                <div key={a.food_id}>
-                                    <Food
-                                        name={a.foodName}
-                                        cost={a.foodCost}
-                                        description={a.description}
-                                        imgPath={a.imagePath}
-                                    />
-                                    <div className="food-main-btns">
-                                        <Box m={2}>
-                                            <Button onClick={()=>setEditFoodPopup(true)}  variant="contained">EDIT FOOD</Button>
-                                            
-                                        </Box>
-                                        <Box m={2}>
-                                            <Button variant="contained" onClick={()=>setDeleteFoodPopup(true)} color="error">DELETE FOOD</Button>
-                                        </Box>
-                                    </div>
-                                    
-                                </div>
-                            )}
-                        </div>
-                    
-                        ))
-                    }
-                </div> */}
+        {foodCategory.map((e) => (
+          <div key={e.id} className="hotel-inside-food-section">
+            {e.food.map((a) => (
+              <div key={a.food_id}>
+                <Food
+                  name={a.foodName}
+                  cost={a.foodCost}
+                  description={a.description}
+                  imgPath={a.imagePath}
+                />
+                <div className="food-main-btns">
+                  <Box m={2}>
+                    <Button
+                      onClick={() => setEditFoodPopup(true)}
+                      variant="contained"
+                    >
+                      EDIT FOOD
+                    </Button>
+                  </Box>
+                  <Box m={2}>
+                    <Button
+                      variant="contained"
+                      onClick={() => setDeleteFoodPopup(true)}
+                      color="error"
+                    >
+                      DELETE FOOD
+                    </Button>
+                  </Box>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div> */}
       <div className="hotel-inside-food-section-main">
         <div className="hotel-inside-food-section">
           {filteredFoodItems.map((a) => (
-            <div key={a._id}>
+            <div key={a.id}>
               <Food
                 name={a.name}
                 cost={a.non_ac_price}
@@ -174,7 +193,7 @@ const Hotel = () => {
                   <Button
                     size="small"
                     variant="contained"
-                    onClick={() => setDeleteFoodPopup(true)}
+                    onClick={() => onDelete(a.id)}
                     color="error"
                   >
                     DELETE FOOD
@@ -188,6 +207,7 @@ const Hotel = () => {
       <DeleteFoodPopUp
         trigger={deleteFoodPopup}
         setTrigger={setDeleteFoodPopup}
+        delId={delId}
       />
       <EditFoodPopup trigger={editFoodPopup} setTrigger={setEditFoodPopup} />
     </div>

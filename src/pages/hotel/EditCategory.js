@@ -11,6 +11,7 @@ const EditCategory = () => {
   }, []);
 
   let [ctgries, setCtgries] = useState([]);
+  let [delId, setDelId] = useState(null);
 
   let fetchCtgries = async () => {
     let { data } = await apis.get("category");
