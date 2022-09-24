@@ -1,16 +1,21 @@
 import React, {useState} from 'react'
 import { Paper, Button } from '@mui/material'
 import './messages.scss'
+import DeleteMsgPopUp from './DeleteMsgPopUp';
 
     const IndividualMsg = ({e}) => {
         const [readMore, setReadMore] = useState(false);
         const toggleBtn = () => {
             setReadMore((prevState) => !prevState);
         };
+        const [trigger, setTrigger] = useState(false);
     return (
         <div>
             <Paper elevation={3}>
                 <div className="message">
+                    <div onClick={()=>setTrigger(true)} className="message-delete-btn">
+                        <i className="fa-solid fa-xmark"></i>
+                    </div> 
                     <div className="message-req">                 
                     <div className='msg-bold'>Food: </div><div>{e.food}</div>
                     </div>
@@ -28,9 +33,10 @@ import './messages.scss'
                     </div>
 
                     <div className='msg-time'><div>{e.time}</div>{e.date}</div>
-                    <div className='msg-btn'><Button color="success" size="small" variant="contained">Mark As Done</Button></div>
                 </div>
             </Paper>
+
+            <DeleteMsgPopUp id={e.id} trigger={trigger} setTrigger={setTrigger} />
         </div>
     )
 }

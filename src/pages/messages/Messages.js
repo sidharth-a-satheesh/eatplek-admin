@@ -2,6 +2,7 @@ import React from 'react'
 import './messages.scss'
 
 import IndividualMsg from './IndividualMsg'
+import DeleteMsgPopUp from './DeleteMsgPopUp'
 
 
 const Messages = () => {
@@ -43,7 +44,7 @@ const Messages = () => {
             
               {
                 messages.map((e)=>(
-                  <IndividualMsg e={e} />
+                  <IndividualMsg key={e.id} e={e} />
                 ))
               }
                           
