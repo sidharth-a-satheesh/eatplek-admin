@@ -175,7 +175,7 @@ const Hotel = () => {
             <div key={a.id}>
               <Food
                 name={a.name}
-                cost={a.non_ac_price}
+                cost={ac ? a.ac_price : a.non_ac_price}
                 description={a.description}
                 imgPath={a.image}
               />
