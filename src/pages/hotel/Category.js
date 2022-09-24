@@ -3,6 +3,7 @@ import "./category.scss";
 import Button from "@mui/material/Button";
 import AddCategory from "./AddCategory";
 import DeleteCategoryPopUp from "./DeleteCategoryPopup";
+import EditCategoryPopup from "./EditCategoryPopup";
 
 const Category = ({ catName, id }) => {
   const [addCategoryPopup, setCategoryPopup] = useState(false);
@@ -30,7 +31,12 @@ const Category = ({ catName, id }) => {
         </div>
       </div>
       <div>
-        <AddCategory trigger={addCategoryPopup} setTrigger={setCategoryPopup} />
+        <EditCategoryPopup
+          trigger={addCategoryPopup}
+          setTrigger={setCategoryPopup}
+          id={id}
+          catName={catName}
+        />
         <DeleteCategoryPopUp
           trigger={deleteCategoryPopUp}
           setTrigger={setDeleteCategoryPopUp}
