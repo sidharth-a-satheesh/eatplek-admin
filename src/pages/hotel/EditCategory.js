@@ -25,7 +25,7 @@ const EditCategory = () => {
       <h1>Edit Categories</h1>
       {/* <hr /> */}
       {ctgries.map((e) => (
-        <Category key={e.id} catName={e.name} />
+        <Category key={e.id} catName={e.name} id={e.id} />
       ))}
       <div className="add-category-main-btn">
         <Button
