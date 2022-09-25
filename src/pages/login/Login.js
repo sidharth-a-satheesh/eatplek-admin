@@ -77,9 +77,9 @@ const Login = () => {
               {errMsg}
             </p>
           </form>
-          <Box mt={1} display="flex" justifyContent="flex-end">
+          {/* <Box mt={1} display="flex" justifyContent="flex-end">
             <Link to="/forgot">Forgot pass?</Link>
-          </Box>
+          </Box> */}
         </div>
       </div>
     </div>
