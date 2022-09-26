@@ -9,7 +9,7 @@ const Food = ({ name, cost, description, imgPath }) => {
   return (
     <div className="food-details-main">
       <div className="food-img-main">
-        <img className="food-image" src={image} alt="" />
+        <img className="food-image" src={imgPath} alt="" />
       </div>
       <div class="food-name-main">
         <div className="food-name">{name}</div>

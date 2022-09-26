@@ -107,7 +107,12 @@ const Hotel = () => {
         </div>
       </div>
       <AddCategory trigger={addCategoryPopup} setTrigger={setCategoryPopup} />
-      <AddFood trigger={addFoodPopup} setTrigger={setFoodPopup} />
+      <AddFood
+        trigger={addFoodPopup}
+        setTrigger={setFoodPopup}
+        id={id}
+        name={restaurant.name}
+      />
       <div className="flex-space-between">
         <div className="hotel-inside-food-category">
           <div
