@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Paper } from "@mui/material";
 import "./messages.scss";
 import DeleteMsgPopUp from "./DeleteMsgPopUp";
+import { localTime } from "../../services/localTime";
 
 const IndividualMsg = ({ e }) => {
   const [readMore, setReadMore] = useState(false);
@@ -37,7 +38,9 @@ const IndividualMsg = ({ e }) => {
           </div>
 
           <div className="msg-time">
-            <div>{e.created_at}</div>
+            <div>
+              {localTime(e.created_at)}
+            </div>
             {e.created_at.substring(0, 10)}
           </div>
         </div>
