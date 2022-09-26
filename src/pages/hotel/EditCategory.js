@@ -15,7 +15,7 @@ const EditCategory = () => {
 
   let fetchCtgries = async () => {
     let { data } = await apis.get("category");
-    console.log(data);
+    // console.log(data);
     setCtgries(data.categories);
   };
 

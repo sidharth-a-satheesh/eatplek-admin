@@ -38,7 +38,7 @@ const Hotel = () => {
 
   let fetchFood = async () => {
     let { data } = await apis.get("food/filter/restaurant/" + id);
-    console.log(data);
+    // console.log(data);
     setFood(data.foods);
     let allFood = [];
     for (let i = 0; i < data.foods.length; i++) {
