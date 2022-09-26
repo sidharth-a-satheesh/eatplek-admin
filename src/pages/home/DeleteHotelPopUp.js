@@ -8,7 +8,7 @@ const DeleteHotelPopUp = ({ id, trigger, setTrigger }) => {
 
   const deleteHotel = (id) => {
     setSuccess(true);
-    console.log(id);
+    // console.log(id);
     apis
       .delete(`restaurant/${id}`, {
         headers: {
@@ -16,8 +16,8 @@ const DeleteHotelPopUp = ({ id, trigger, setTrigger }) => {
         },
       })
       .then((response) => {
-        console.log("Deleted");
-        console.log(response);
+        // console.log("Deleted");
+        // console.log(response);
         window.location.reload(true);
       });
   };

@@ -22,7 +22,7 @@ const EditCategoryPopup = ({ trigger, setTrigger, id, catName }) => {
         },
       }
     );
-    console.log(res);
+    // console.log(res);
     window.location.reload();
   };
 

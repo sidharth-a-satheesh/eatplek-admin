@@ -22,7 +22,7 @@ const AddCategory = ({ trigger, setTrigger }) => {
         },
       }
     );
-    console.log(res);
+    // console.log(res);
     window.location.reload();
   };
 

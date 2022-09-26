@@ -19,7 +19,7 @@ const Home = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     apis.get("restaurant").then((response) => {
-      console.log(response.data.restaurants);
+      // console.log(response.data.restaurants);
       setData(response.data.restaurants);
       setDuplicateData(response.data.restaurants);
     });

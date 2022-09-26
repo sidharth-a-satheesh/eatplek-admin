@@ -18,7 +18,7 @@ const DeleteCategoryPopUp = ({ delId, trigger, setTrigger }) => {
   //     window.location.reload(true)
   //     })
   // }
-  console.log(delId);
+  // console.log(delId);
 
   const [success, setSuccess] = useState(false);
 
