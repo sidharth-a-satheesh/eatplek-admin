@@ -25,7 +25,7 @@ function App() {
           <Route element={<AdminProtectedRoutes />}>
             <Route path="/home" element={<Home />} />
             <Route path="/hotel/:id" element={<Hotel />} />
-            <Route path="/invoice" element={<Bill />} />
+            <Route path="/invoice/:id" element={<Bill />} />
             <Route path="/orders" element={<Order />} />
             <Route path="/decline" element={<Decline />} />
             <Route path="/revenue" element={<Revenue />} />

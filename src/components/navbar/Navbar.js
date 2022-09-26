@@ -11,7 +11,7 @@ export default function Navbar() {
   // console.log(location.pathname);
   if (
     location.pathname === "/" ||
-    location.pathname === "/invoice" ||
+    location.pathname.substring(0, 8) === "/invoice" ||
     location.pathname === "/reset" ||
     location.pathname === "/forgot"
   ) {
