@@ -29,7 +29,7 @@ const IndividualMsg = ({ e }) => {
             <div>{e.restaurant}</div>
           </div>
           <div className="msg-bold">Description:</div>
-          <div class="msg-des">
+          <div className="msg-des">
             {readMore ? e.description : e.description.substring(0, 45) + "..."}
             <button className="read-more-btn" onClick={toggleBtn}>
               {readMore ? "Read Less" : "Read More"}
