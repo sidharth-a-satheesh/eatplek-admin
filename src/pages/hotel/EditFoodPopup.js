@@ -31,6 +31,33 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
     myWait();
   }, [imgData]);
 
+  let postWithoutImage = async () => {
+    let price = {};
+    if (formData.non_ac_price)
+      price["non_ac_price"] = Number(formData.non_ac_price);
+    if (formData.ac_price) price["ac_price"] = Number(formData.ac_price);
+    await apis.post(
+      "food",
+      {
+        ...formData,
+        ...price,
+        category_id: formData.restaurant_id.substring(
+          0,
+          formData.restaurant_id.indexOf(" ")
+        ),
+        category_name: formData.restaurant_id.substring(
+          formData.restaurant_id.indexOf(" ") + 1
+        ),
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Token: localStorage.getItem("jwt_admin"),
+        },
+      }
+    );
+  };
+
   let myWait = async () => {
     if (typeof imgData == "string") {
       let price = {};
@@ -74,8 +101,13 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
   let onFormSubmit = async (e) => {
     e.preventDefault();
     setSubmitBtn(1);
-    let img = await fileUpload(imgData);
-    setImgData(img);
+    if (imgData) {
+      let img = await fileUpload(imgData);
+      setImgData(img);
+    } else {
+      await postWithoutImage();
+      window.location.reload();
+    }
   };
 
   return trigger ? (
@@ -104,6 +136,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                   displayEmpty
                   defaultValue={food.category_id + " " + food.category_name}
                   InputLabelProps={{ shrink: true }}
+                  onChange={onInputChange}
                 >
                   {foodCategories.map((item, index) => {
                     return (
@@ -123,6 +156,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                   label="Veg/Non-Veg"
                   defaultValue={food.is_veg}
                   InputLabelProps={{ shrink: true }}
+                  onChange={onInputChange}
                 >
                   <MenuItem value={true}>Veg</MenuItem>
                   <MenuItem value={false}>Non-Veg</MenuItem>
@@ -132,13 +166,13 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
             <Box m={2}>
               <TextField
                 type={"text"}
-                required
                 fullWidth
                 id="add-food-name"
                 label="Food Name"
                 variant="outlined"
                 defaultValue={food.name}
                 InputLabelProps={{ shrink: true }}
+                onChange={onInputChange}
               />
             </Box>
             <Box m={2}>
@@ -153,6 +187,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                 variant="outlined"
                 defaultValue={food.description}
                 InputLabelProps={{ shrink: true }}
+                onChange={onInputChange}
               />
             </Box>
             {/* <div className='add-food-cost-ac-non-ac'>
@@ -163,13 +198,13 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
             <Box m={2}>
               <TextField
                 type={"number"}
-                required
                 // fullWidth
                 id="add-food-cost-non-ac"
                 label="Price: (Non-AC)"
                 variant="outlined"
                 defaultValue={food.non_ac_price}
                 InputLabelProps={{ shrink: true }}
+                onChange={onInputChange}
               />
             </Box>
             {/* <Box m={2}>
@@ -185,12 +220,19 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                 variant="outlined"
                 defaultValue={food.ac_price}
                 InputLabelProps={{ shrink: true }}
+                onChange={onInputChange}
               />
             </Box>
             {/* </div> */}
             <Box m={2}>
               <label htmlFor="">Enter Food Image: </label>
-              <input required type="file" name="" id="food-img" />
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/jpg"
+                name="img"
+                onChange={onInputChange}
+                id="food-img"
+              />
             </Box>
             <Box m={2}>
               <Button type={"submit"} variant="contained">
