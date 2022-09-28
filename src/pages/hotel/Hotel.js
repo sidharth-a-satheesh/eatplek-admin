@@ -30,7 +30,7 @@ const Hotel = () => {
   let [selectedCtgryId, setSelectedCtgryId] = useState("All");
   let [ac, setAc] = useState(false);
   let [delId, setDelId] = useState(null);
-
+  let [editFood, setEditFood] = useState(null);
   let fetchRestaurant = async () => {
     let { data } = await apis.get("restaurant/" + id);
     setRestaurant(data.restaurant);
@@ -58,6 +58,11 @@ const Hotel = () => {
   let onDelete = async (id) => {
     setDelId(id);
     setDeleteFoodPopup(true);
+  };
+
+  let onEdit = async (food) => {
+    setEditFood(food);
+    setEditFoodPopup(true);
   };
 
   const [addFoodPopup, setFoodPopup] = useState(false);
@@ -188,7 +193,7 @@ const Hotel = () => {
                 <Box m={1}>
                   <Button
                     size="small"
-                    onClick={() => setEditFoodPopup(true)}
+                    onClick={() => onEdit(a)}
                     variant="contained"
                   >
                     EDIT FOOD
@@ -214,7 +219,11 @@ const Hotel = () => {
         setTrigger={setDeleteFoodPopup}
         delId={delId}
       />
-      <EditFoodPopup trigger={editFoodPopup} setTrigger={setEditFoodPopup} />
+      <EditFoodPopup
+        trigger={editFoodPopup}
+        setTrigger={setEditFoodPopup}
+        editFood={editFood}
+      />
     </div>
   );
 };
