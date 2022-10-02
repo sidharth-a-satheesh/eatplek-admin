@@ -42,12 +42,12 @@ const AddFood = ({ trigger, setTrigger, id, name }) => {
           ...formData,
           ...price,
           image: imgData,
-          category_id: formData.restaurant_id.substring(
+          category_id: formData.category_id.substring(
             0,
-            formData.restaurant_id.indexOf(" ")
+            formData.category_id.indexOf(" ")
           ),
-          category_name: formData.restaurant_id.substring(
-            formData.restaurant_id.indexOf(" ") + 1
+          category_name: formData.category_id.substring(
+            formData.category_id.indexOf(" ") + 1
           ),
           restaurant_id: id,
           restaurant_name: name,
@@ -99,7 +99,7 @@ const AddFood = ({ trigger, setTrigger, id, name }) => {
                   labelId="choose-catogory"
                   id="demo-choose-catogory"
                   label="Category"
-                  name="restaurant_id"
+                  name="category_id"
                   required
                   onChange={onInputChange}
                 >

@@ -181,37 +181,41 @@ const Hotel = () => {
       </div> */}
       <div className="hotel-inside-food-section-main">
         <div className="hotel-inside-food-section">
-          {filteredFoodItems.map((a) => (
-            <div key={a.id}>
-              <Food
-                name={a.name}
-                cost={ac ? a.ac_price : a.non_ac_price}
-                description={a.description}
-                imgPath={a.image}
-              />
-              <div className="food-main-btns">
-                <Box m={1}>
-                  <Button
-                    size="small"
-                    onClick={() => onEdit(a)}
-                    variant="contained"
-                  >
-                    EDIT FOOD
-                  </Button>
-                </Box>
-                <Box m={1}>
-                  <Button
-                    size="small"
-                    variant="contained"
-                    onClick={() => onDelete(a.id)}
-                    color="error"
-                  >
-                    DELETE FOOD
-                  </Button>
-                </Box>
+          {filteredFoodItems.map((a) => {
+            if (!ac && a.non_ac_price === 0) return null;
+            if (ac && a.ac_price === 0) return null;
+            return (
+              <div key={a.id}>
+                <Food
+                  name={a.name}
+                  cost={ac ? a.ac_price : a.non_ac_price}
+                  description={a.description}
+                  imgPath={a.image}
+                />
+                <div className="food-main-btns">
+                  <Box m={1}>
+                    <Button
+                      size="small"
+                      onClick={() => onEdit(a)}
+                      variant="contained"
+                    >
+                      EDIT FOOD
+                    </Button>
+                  </Box>
+                  <Box m={1}>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      onClick={() => onDelete(a.id)}
+                      color="error"
+                    >
+                      DELETE FOOD
+                    </Button>
+                  </Box>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       <DeleteFoodPopUp
