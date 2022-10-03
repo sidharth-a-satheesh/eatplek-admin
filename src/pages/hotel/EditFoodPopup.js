@@ -23,7 +23,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
     setFoodCategories(data.categories);
   };
 
-  let [formData, setFormData] = useState({});
+  let [formData, setFormData] = useState();
   let [imgData, setImgData] = useState(null);
   const [submitBtn, setSubmitBtn] = useState(0);
 
@@ -36,18 +36,20 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
     if (formData.non_ac_price)
       price["non_ac_price"] = Number(formData.non_ac_price);
     if (formData.ac_price) price["ac_price"] = Number(formData.ac_price);
-    await apis.post(
+    await apis.put(
       "food",
       {
         ...formData,
         ...price,
-        category_id: formData.restaurant_id.substring(
-          0,
-          formData.restaurant_id.indexOf(" ")
-        ),
-        category_name: formData.restaurant_id.substring(
-          formData.restaurant_id.indexOf(" ") + 1
-        ),
+        ...(formData.category_id && {
+          category_id: formData.category_id.substring(
+            0,
+            formData.category_id.indexOf(" ")
+          ),
+          category_name: formData.category_id.substring(
+            formData.category_id.indexOf(" ") + 1
+          ),
+        }),
       },
       {
         headers: {
@@ -64,19 +66,21 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
       if (formData.non_ac_price)
         price["non_ac_price"] = Number(formData.non_ac_price);
       if (formData.ac_price) price["ac_price"] = Number(formData.ac_price);
-      await apis.post(
+      await apis.put(
         "food",
         {
           ...formData,
           ...price,
           image: imgData,
-          category_id: formData.restaurant_id.substring(
-            0,
-            formData.restaurant_id.indexOf(" ")
-          ),
-          category_name: formData.restaurant_id.substring(
-            formData.restaurant_id.indexOf(" ") + 1
-          ),
+          ...(formData.category_id && {
+            category_id: formData.category_id.substring(
+              0,
+              formData.category_id.indexOf(" ")
+            ),
+            category_name: formData.category_id.substring(
+              formData.category_id.indexOf(" ") + 1
+            ),
+          }),
         },
         {
           headers: {
@@ -137,6 +141,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                   defaultValue={food.category_id + " " + food.category_name}
                   InputLabelProps={{ shrink: true }}
                   onChange={onInputChange}
+                  name="category_id"
                 >
                   {foodCategories.map((item, index) => {
                     return (
@@ -157,6 +162,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                   defaultValue={food.is_veg}
                   InputLabelProps={{ shrink: true }}
                   onChange={onInputChange}
+                  name="is_veg"
                 >
                   <MenuItem value={true}>Veg</MenuItem>
                   <MenuItem value={false}>Non-Veg</MenuItem>
@@ -173,6 +179,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                 defaultValue={food.name}
                 InputLabelProps={{ shrink: true }}
                 onChange={onInputChange}
+                name="name"
               />
             </Box>
             <Box m={2}>
@@ -188,6 +195,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                 defaultValue={food.description}
                 InputLabelProps={{ shrink: true }}
                 onChange={onInputChange}
+                name="description"
               />
             </Box>
             {/* <div className='add-food-cost-ac-non-ac'>
@@ -205,6 +213,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                 defaultValue={food.non_ac_price}
                 InputLabelProps={{ shrink: true }}
                 onChange={onInputChange}
+                name="non_ac_price"
               />
             </Box>
             {/* <Box m={2}>
@@ -221,6 +230,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                 defaultValue={food.ac_price}
                 InputLabelProps={{ shrink: true }}
                 onChange={onInputChange}
+                name="ac_price"
               />
             </Box>
             {/* </div> */}
@@ -236,7 +246,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
             </Box>
             <Box m={2}>
               <Button type={"submit"} variant="contained">
-                SUBMIT
+                {submitBtn ? "Submitting..." : "Submit"}
               </Button>
             </Box>
           </form>
