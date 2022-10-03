@@ -20,7 +20,6 @@ function AddHotelPopup({ trigger, setTrigger }) {
   const [dineIn, setDineIn] = useState(false);
   const [takeAway, setTakeAway] = useState(false);
   const [veg, setVeg] = useState(false);
-  const [fakeImage, setFakeImage] = useState("");
   const [submitBtn, setSubmitBtn] = useState(0);
   let [formData, setFormData] = useState({});
   let [days, setDays] = useState({
