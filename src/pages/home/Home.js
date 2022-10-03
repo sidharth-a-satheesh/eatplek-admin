@@ -45,6 +45,7 @@ const Home = () => {
   const [editHotelPopup, setEditHotelPopup] = useState(false);
   const [deleteHotelPopup, setDeleteHotelPopup] = useState(false);
   const [deleteHotelId, setDeleteHotelId] = useState("");
+  const [editHotel, setEditHotel] = useState("");
 
   // const update = (id) =>{
   //   console.log(id)
@@ -53,6 +54,11 @@ const Home = () => {
   const deletehotel = (id) => {
     setDeleteHotelPopup(true);
     setDeleteHotelId(id);
+  };
+
+  const edithotel = (hotel) => {
+    setEditHotelPopup(true);
+    setEditHotel(hotel);
   };
 
   return (
@@ -103,10 +109,7 @@ const Home = () => {
             <div className="hotel-main-btns">
               <Box m={2}>
                 {/* <Button onClick={()=>setEditHotelPopup(true)}  variant="contained">EDIT HOTEL</Button> */}
-                <Button
-                  onClick={() => setEditHotelPopup(true)}
-                  variant="contained"
-                >
+                <Button onClick={() => edithotel(e)} variant="contained">
                   EDIT HOTEL
                 </Button>
               </Box>
@@ -128,7 +131,11 @@ const Home = () => {
           
         </div>
       </div> */}
-      <EditHotelPopup trigger={editHotelPopup} setTrigger={setEditHotelPopup} />
+      <EditHotelPopup
+        trigger={editHotelPopup}
+        setTrigger={setEditHotelPopup}
+        hotel={editHotel}
+      />
       <DeleteHotelPopUp
         id={deleteHotelId}
         trigger={deleteHotelPopup}
