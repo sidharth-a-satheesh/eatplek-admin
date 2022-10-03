@@ -16,13 +16,22 @@ function AddHotelPopup({ trigger, setTrigger }) {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [image, setImage] = useState(null);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(null);
   const [dineIn, setDineIn] = useState(false);
   const [takeAway, setTakeAway] = useState(false);
   const [veg, setVeg] = useState(false);
   const [fakeImage, setFakeImage] = useState("");
   const [submitBtn, setSubmitBtn] = useState(0);
   let [formData, setFormData] = useState({});
+  let [days, setDays] = useState({
+    Mon: false,
+    Tue: false,
+    Wed: false,
+    Thu: false,
+    Fri: false,
+    Sat: false,
+    Sun: false,
+  });
 
   useEffect(() => {
     myWait();
@@ -34,16 +43,27 @@ function AddHotelPopup({ trigger, setTrigger }) {
         "restaurant",
         {
           ...formData,
+          maximum_no_of_guests: Number(formData.maximum_no_of_guests),
+          email: email,
           name: `${name}`,
           location: `${location}`,
           phone: `${number}`,
           type: `${foodType}`,
           image: `${image}`,
-          dine_in: Boolean({ dineIn }),
-          take_away: Boolean({ takeAway }),
+          dine_in: Boolean(dineIn),
+          take_away: Boolean(takeAway),
           username: `${user}`,
           password: `${pass}`,
-          isveg: Boolean({ veg }),
+          isveg: Boolean(veg),
+          days_open: [
+            ...(days.Mon ? ["Mon"] : []),
+            ...(days.Tue ? ["Tue"] : []),
+            ...(days.Wed ? ["Wed"] : []),
+            ...(days.Thu ? ["Thu"] : []),
+            ...(days.Fri ? ["Fri"] : []),
+            ...(days.Sat ? ["Sat"] : []),
+            ...(days.Sun ? ["Sun"] : []),
+          ],
         },
         {
           headers: {
@@ -204,25 +224,42 @@ function AddHotelPopup({ trigger, setTrigger }) {
                   id="add-hotel-count"
                   label="Total Guest Count"
                   variant="outlined"
+                  name="maximum_no_of_guests"
+                  value={formData.maximum_no_of_guests}
+                  onChange={onInputChange}
                 />
               </Box>
             </div>
             <Box ml={1}>
               Choose Working Days:
               <label> Mon </label>
-              <Checkbox />
+              <Checkbox
+                onChange={() => setDays((pd) => ({ ...pd, Mon: !pd.Mon }))}
+              />
               <label>Tue </label>
-              <Checkbox />
+              <Checkbox
+                onChange={() => setDays((pd) => ({ ...pd, Tue: !pd.Tue }))}
+              />
               <label>Wed </label>
-              <Checkbox />
-              <label>Thurs </label>
-              <Checkbox />
+              <Checkbox
+                onChange={() => setDays((pd) => ({ ...pd, Wed: !pd.Wed }))}
+              />
+              <label>Thu </label>
+              <Checkbox
+                onChange={() => setDays((pd) => ({ ...pd, Thu: !pd.Thu }))}
+              />
               <label>Fri </label>
-              <Checkbox />
+              <Checkbox
+                onChange={() => setDays((pd) => ({ ...pd, Fri: !pd.Fri }))}
+              />
               <label>Sat </label>
-              <Checkbox />
+              <Checkbox
+                onChange={() => setDays((pd) => ({ ...pd, Sat: !pd.Sat }))}
+              />
               <label>Sun </label>
-              <Checkbox />
+              <Checkbox
+                onChange={() => setDays((pd) => ({ ...pd, Sun: !pd.Sun }))}
+              />
             </Box>
             <Box>
               <Box ml={1}>
