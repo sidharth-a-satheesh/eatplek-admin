@@ -59,7 +59,7 @@ const Home = () => {
     <div className="home-main">
       <div className="add-hotels-btn">
         <Button onClick={() => setAddHotelPopup(true)} variant="contained">
-          Add Hotels
+          Add Hotel
         </Button>
       </div>
       <FormControl>
