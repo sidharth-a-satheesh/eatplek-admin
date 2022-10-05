@@ -34,6 +34,19 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
 
   useEffect(() => {
     if (hotel.id) {
+      setFormData({
+        name: hotel.name,
+        location: hotel.location,
+        phone: hotel.phone,
+        email: hotel.email,
+        username: hotel.username,
+        maximum_no_of_guests: hotel.maximum_no_of_guests,
+        days_open: hotel.days_open,
+        opening_time: hotel.opening_time,
+        closing_time: hotel.closing_time,
+        type: hotel.type,
+        image: hotel.image,
+      });
       setDays({
         Mon: findDay("Mon"),
         Tue: findDay("Tue"),
@@ -45,7 +58,7 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
       });
       setDineIn(hotel.dine_in);
       setTakeAway(hotel.take_away);
-      setVeg(hotel.is_veg);
+      setVeg(hotel.isveg);
     }
   }, [hotel]);
 
@@ -143,15 +156,12 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
   };
   const handleDineIn = (e) => {
     setDineIn(e.target.checked);
-    console.log("Dine In : " + e.target.checked);
   };
   const handleVeg = (e) => {
     setVeg(e.target.checked);
-    console.log("Veg : " + e.target.checked);
   };
   const handleTakeAway = (e) => {
     setTakeAway(e.target.checked);
-    console.log("Take Away : " + e.target.checked);
   };
 
   return trigger ? (
@@ -166,7 +176,7 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
 
         <div className="add-hotel-form">
           <form onSubmit={postData}>
-            <h1>Enter Hotel Details</h1>
+            <h1>Edit Hotel Details</h1>
             <Box m={1}>
               <TextField
                 type={"text"}
@@ -232,9 +242,12 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
                   onChange={onInputChange}
                   defaultValue={hotel.email}
                   InputLabelProps={{ shrink: true }}
+                  disabled
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Box>
-
               <Box m={1}>
                 <TextField
                   type={"text"}
@@ -342,12 +355,16 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
                   type="time"
                   name="opening_time"
                   onChange={onInputChange}
+                  defaultValue={hotel.opening_time}
+                  InputLabelProps={{ shrink: true }}
                 />
                 <label> Closing Time: </label>
                 <input
                   type="time"
                   name="closing_time"
                   onChange={onInputChange}
+                  defaultValue={hotel.closing_time}
+                  InputLabelProps={{ shrink: true }}
                 />
               </Box>
             </Box>
@@ -357,7 +374,7 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
             </Box>
             <Box ml={1}>
               <Button type={"submit"} variant="contained">
-                {submitBtn ? "Adding..." : "Add Hotel"}
+                {submitBtn ? "Submitting..." : "Submit"}
               </Button>
             </Box>
           </form>

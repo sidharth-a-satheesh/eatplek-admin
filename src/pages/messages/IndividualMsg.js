@@ -3,6 +3,7 @@ import { Paper } from "@mui/material";
 import "./messages.scss";
 import DeleteMsgPopUp from "./DeleteMsgPopUp";
 import { localTime } from "../../services/localTime";
+import { localDate } from "../../services/localDate";
 
 const IndividualMsg = ({ e }) => {
   const [readMore, setReadMore] = useState(false);
@@ -38,10 +39,8 @@ const IndividualMsg = ({ e }) => {
           </div>
 
           <div className="msg-time">
-            <div>
-              {localTime(e.created_at)}
-            </div>
-            {e.created_at.substring(0, 10)}
+            <div>{localTime(e.created_at)}</div>
+            {localDate(e.created_at)}
           </div>
         </div>
       </Paper>
