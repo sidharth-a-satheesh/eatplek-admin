@@ -150,3 +150,70 @@
         
     }
 }
+
+
+@media only screen and (max-width: 1100px){
+    .bill-bg{
+        .bill-main{
+            grid-template-columns: 50%;
+        }
+    }
+}
+@media only screen and (max-width: 950px){
+    .bill-bg{
+        .bill-main{
+            grid-template-columns: 60%;
+        }
+    }
+}
+@media only screen and (max-width: 800px){
+    .bill-bg{
+        .bill-main{
+            grid-template-columns: 70%;
+            padding-top: 1rem;
+        }
+        .bill-go-back-btn{
+            top: 1rem;
+            left: 1rem;
+        }
+    }
+}
+@media only screen and (max-width: 650px){
+    .bill-bg{
+        .bill-main{
+            grid-template-columns: 80%;
+        }
+    }
+}
+@media only screen and (max-width: 550px){
+    .bill-bg{
+        .bill-main{
+            grid-template-columns: 98%;
+        }
+    }
+}
+@media only screen and (max-width: 450px){
+    .bill-bg{
+        .bill-main{
+            .bill{
+                .bill-top{
+                    .bill-top-details{
+                        font-size: 0.9rem;
+                        .bill-bold{
+                            font-size: 1rem;
+                        }
+                    }
+                    .bill-top-heading{
+                        padding: 1.3rem;
+                        font-size: 1.3rem;
+                    }
+                }
+                .bill-middle-main{
+                    .bill-hotel-name{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
