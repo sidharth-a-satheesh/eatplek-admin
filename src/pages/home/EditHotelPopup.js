@@ -71,7 +71,7 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
       "restaurant/" + hotel.id,
       {
         ...formData,
-        ...(formData.maximum_no_of_guests && {
+        ...(formData && formData.maximum_no_of_guests && {
           maximum_no_of_guests: Number(formData.maximum_no_of_guests),
         }),
         dine_in: Boolean(dineIn),
