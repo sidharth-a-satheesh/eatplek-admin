@@ -32,16 +32,19 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
   }, [imgData]);
 
   let postWithoutImage = async () => {
-    let price = {};
-    if (formData.non_ac_price)
+    let price = { non_ac_price: food.non_ac_price, ac_price: food.ac_price };
+    if (formData && formData.non_ac_price)
       price["non_ac_price"] = Number(formData.non_ac_price);
-    if (formData.ac_price) price["ac_price"] = Number(formData.ac_price);
+    if (formData && formData.ac_price) price["ac_price"] = Number(formData.ac_price);
     await apis.put(
-      "food",
+      "food/" + food.id,
       {
+        name: food.name,
+        description: food.description,
+        image: food.image,
         ...formData,
         ...price,
-        ...(formData.category_id && {
+        ...(formData && formData.category_id && {
           category_id: formData.category_id.substring(
             0,
             formData.category_id.indexOf(" ")
@@ -62,17 +65,19 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
 
   let myWait = async () => {
     if (typeof imgData == "string") {
-      let price = {};
-      if (formData.non_ac_price)
+      let price = { non_ac_price: food.non_ac_price, ac_price: food.ac_price };
+      if (formData && formData.non_ac_price)
         price["non_ac_price"] = Number(formData.non_ac_price);
-      if (formData.ac_price) price["ac_price"] = Number(formData.ac_price);
+      if (formData && formData.ac_price) price["ac_price"] = Number(formData.ac_price);
       await apis.put(
-        "food",
+        "food/" + food.id,
         {
+          name: food.name,
+          description: food.description,
           ...formData,
           ...price,
           image: imgData,
-          ...(formData.category_id && {
+          ...(formData && formData.category_id && {
             category_id: formData.category_id.substring(
               0,
               formData.category_id.indexOf(" ")
