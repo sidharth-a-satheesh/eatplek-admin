@@ -39,6 +39,7 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
         location: hotel.location,
         phone: hotel.phone,
         email: hotel.email,
+        password: hotel.password,
         username: hotel.username,
         maximum_no_of_guests: hotel.maximum_no_of_guests,
         days_open: hotel.days_open,
@@ -71,9 +72,10 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
       "restaurant/" + hotel.id,
       {
         ...formData,
-        ...(formData && formData.maximum_no_of_guests && {
-          maximum_no_of_guests: Number(formData.maximum_no_of_guests),
-        }),
+        ...(formData &&
+          formData.maximum_no_of_guests && {
+            maximum_no_of_guests: Number(formData.maximum_no_of_guests),
+          }),
         dine_in: Boolean(dineIn),
         take_away: Boolean(takeAway),
         isveg: Boolean(veg),
@@ -242,10 +244,6 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
                   onChange={onInputChange}
                   defaultValue={hotel.email}
                   InputLabelProps={{ shrink: true }}
-                  disabled
-                  InputProps={{
-                    readOnly: true,
-                  }}
                 />
               </Box>
               <Box m={1}>
@@ -270,6 +268,11 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
                   variant="outlined"
                   name="password"
                   onChange={onInputChange}
+                  defaultValue={hotel.password}
+                  disabled
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Box>
 
