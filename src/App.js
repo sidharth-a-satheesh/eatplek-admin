@@ -14,6 +14,7 @@ import ForgotPass from "./pages/login/ForgotPass";
 import ResetPass from "./pages/login/ResetPass";
 import Messages from "./pages/messages/Messages";
 import AdminProtectedRoutes from "./services/components/AdminProtectedRoutes";
+import Feedback from "./pages/feedback/Feedback";
 
 function App() {
   return (
@@ -31,9 +32,11 @@ function App() {
             <Route path="/revenue" element={<Revenue />} />
             <Route path="/edit-category" element={<EditCategory />} />
             <Route path="/messages" element={<Messages />} />
+            <Route path="/forgot" element={<ForgotPass />} />
+            <Route path="/reset" element={<ResetPass />} />
+            <Route path="/feedback" element={<Feedback />} />
           </Route>
-          <Route path="/forgot" element={<ForgotPass />} />
-          <Route path="/reset" element={<ResetPass />} />
+          
         </Routes>
       </BrowserRouter>
     </div>

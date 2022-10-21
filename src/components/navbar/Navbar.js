@@ -46,6 +46,9 @@ export default function Navbar() {
         <Link to="/messages">
           <p>Messages</p>
         </Link>
+        <Link to="/feedback">
+          <p>Feedback</p>
+        </Link>
         <Link to="" onClick={onLogout}>
           <p>Logout</p>
         </Link>
