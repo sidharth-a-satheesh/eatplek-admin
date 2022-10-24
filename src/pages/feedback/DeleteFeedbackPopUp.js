@@ -6,7 +6,7 @@ import apis from "../../components/axios/axios";
 const DeleteMsgPopUp = ({ id, trigger, setTrigger }) => {
   let onDelete = async () => {
     setSuccess(true);
-    await apis.delete("request/" + id, {
+    await apis.delete("feedback/" + id, {
       headers: {
         "Content-Type": "application/json",
         Token: localStorage.getItem("jwt_admin"),
@@ -27,7 +27,7 @@ const DeleteMsgPopUp = ({ id, trigger, setTrigger }) => {
           <i className="fa-solid fa-xmark"></i>
         </div>
         <div className="delete-msg-sub">
-          <div>Are you sure you want to delete this message</div>
+          <div>Are you sure you want to delete this feedback?</div>
           <Box display="flex" justifyContent="center" m={3}>
             <Button variant="contained" color="error" onClick={onDelete}>
               {success ? "Deleting..." : "Confirm Delete"}

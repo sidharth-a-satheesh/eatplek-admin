@@ -1,15 +1,17 @@
-import React from 'react'
-import { Paper } from '@mui/material'
-import { useState } from 'react'
-import DeleteFeedbackPopUp from './DeleteFeedbackPopUp'
+import React from "react";
+import { Paper } from "@mui/material";
+import { useState } from "react";
+import DeleteFeedbackPopUp from "./DeleteFeedbackPopUp";
+import { localDate } from "../../services/localDate";
+import { localTime } from "../../services/localTime";
 
-const IndividualFeedback = ({}) => {
-    const [readMore, setReadMore] = useState(false);
+const IndividualFeedback = ({ e }) => {
+  const [readMore, setReadMore] = useState(false);
   const toggleBtn = () => {
     setReadMore((prevState) => !prevState);
   };
   const [trigger, setTrigger] = useState(false);
-  const description = "qwertyuiopw ertyuidf ghjertyuirftgyh ujikedrftgy hujikerftgyhujikrf tgyhujikolqwe rtyuiopwerty uidfghjertyuirftgy hujikedrftgyhc ujikerftgyhujik rftgyhujikol"
+  const description = e.feedback;
   return (
     <div>
       <Paper elevation={3}>
@@ -25,15 +27,19 @@ const IndividualFeedback = ({}) => {
           </div>
 
           <div className="msg-time">
-            <div>05:23 PM</div>
-            15/09/2001
+            <div>{localTime(e.created_at)}</div>
+            {localDate(e.created_at)}
           </div>
         </div>
       </Paper>
 
-      <DeleteFeedbackPopUp trigger={trigger} setTrigger={setTrigger} />
+      <DeleteFeedbackPopUp
+        id={e.id}
+        trigger={trigger}
+        setTrigger={setTrigger}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default IndividualFeedback
+export default IndividualFeedback;

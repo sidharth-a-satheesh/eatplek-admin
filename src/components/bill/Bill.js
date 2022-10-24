@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import apis from "../axios/axios";
 import { localTime } from "../../services/localTime";
+import { localDate } from "../../services/localDate";
 
 const Bill = () => {
   let navigate = useNavigate();
@@ -95,7 +96,7 @@ const Bill = () => {
               <div>
                 Billing Date:{" "}
                 <span className="bill-text-bold">
-                  {bill.created_at.substring(0, 10)}
+                  {localDate(bill.created_at)}
                 </span>
               </div>
               <div>
