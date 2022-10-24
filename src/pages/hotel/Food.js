@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./food.scss";
-import image from "../../assets/food.png";
+// import image from "../../assets/food.png";
 const Food = ({ name, cost, description, imgPath }) => {
   const [readMore, setReadMore] = useState(false);
   const toggleBtn = () => {
