@@ -23,7 +23,7 @@ const Bill = () => {
         Token: localStorage.getItem("jwt_admin"),
       },
     });
-    console.log(data);
+    // console.log(data);
     setBill(data.result);
   };
 
