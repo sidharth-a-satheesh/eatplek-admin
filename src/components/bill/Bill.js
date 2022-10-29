@@ -23,7 +23,7 @@ const Bill = () => {
         Token: localStorage.getItem("jwt_admin"),
       },
     });
-    // console.log(data);
+    console.log(data);
     setBill(data.result);
   };
 
@@ -58,7 +58,7 @@ const Bill = () => {
           <div className="bill-middle-main">
             <div className="bill-hotel-name">{bill.cart.restaurant_name}</div>
             <div className="bill-hotel-location-number">
-              {bill.restaurant.location}
+              {bill.restaurant.location} , {bill.restaurant.phone}
             </div>
             <hr className="bill-dashed-hr" />
             <div className="bill-middle-sub">
