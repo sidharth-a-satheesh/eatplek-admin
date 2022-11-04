@@ -2,8 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import apis from "../../components/axios/axios";
 import "./login.scss";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
+// import { Link } from "react-router-dom";
+// import { Box } from "@mui/material";
 
 const Login = () => {
   const navigate = useNavigate();
