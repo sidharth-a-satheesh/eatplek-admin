@@ -1,23 +1,34 @@
-import React from 'react'
-import './feedback.scss'
-import IndividualFeedback from './IndividualFeedback'
+import React, { useEffect, useState } from "react";
+import apis from "../../components/axios/axios";
+import "./feedback.scss";
+import IndividualFeedback from "./IndividualFeedback";
 
 const Feedback = () => {
-  return (
-    <div className='feedback-main'>
-        <h1>Feedback</h1>
-        <div className="feedbacks">
-            {/* {requests.map((e) => (
-            <IndividualMsg key={e.id} e={e} />
-            ))} */}
-            <IndividualFeedback />
-            <IndividualFeedback />
-            <IndividualFeedback />
-            <IndividualFeedback />
-            <IndividualFeedback />  
-        </div>
-    </div>
-  )
-}
+  useEffect(() => {
+    fetchFeedbacks();
+  }, []);
 
-export default Feedback
+  let fetchFeedbacks = async () => {
+    let { data } = await apis.get("feedback", {
+      headers: {
+        "Content-Type": "application/json",
+        Token: localStorage.getItem("jwt_admin"),
+      },
+    });
+    setFeedbacks(data);
+  };
+
+  let [feedbacks, setFeedbacks] = useState([]);
+  return (
+    <div className="feedback-main">
+      <h1>Feedback</h1>
+      <div className="feedbacks">
+        {feedbacks.map((e) => (
+          <IndividualFeedback key={e.id} e={e} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Feedback;

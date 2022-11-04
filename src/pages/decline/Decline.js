@@ -3,6 +3,7 @@ import apis from "../../components/axios/axios";
 import "./decline.scss";
 import { localTime } from "../../services/localTime";
 import { httpHeaders } from "../../services/httpHeaders";
+import { localDate } from "../../services/localDate";
 
 const Decline = () => {
   useEffect(() => {
@@ -48,7 +49,7 @@ const Decline = () => {
                 {localTime(item.declined_at)}
               </div>
               <div className="declined-text-right">
-                {item.declined_at.substring(0, 10)}
+                {localDate(item.declined_at)}
               </div>
             </div>
             <hr className="declined-hr" />
