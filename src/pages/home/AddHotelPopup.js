@@ -112,7 +112,6 @@ function AddHotelPopup({ trigger, setTrigger }) {
         >
           <i className="fa-solid fa-xmark"></i>
         </div>
-
         <div className="add-hotel-form">
           <form onSubmit={postData}>
             <h1>Enter Hotel Details</h1>
