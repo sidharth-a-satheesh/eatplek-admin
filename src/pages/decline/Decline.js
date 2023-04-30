@@ -36,7 +36,7 @@ const Decline = () => {
         <div className="declined-text-right">Date</div>
       </div>
       <hr className="declined-hr" />
-      {orders.map((item, index) => {
+      {orders && orders.map((item, index) => {
         return (
           <div key={index}>
             <div className="declined-order">

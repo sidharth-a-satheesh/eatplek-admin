@@ -37,7 +37,7 @@ const Order = () => {
         <div className="order-text-center">Invoice</div>
       </div>
       <hr className="order-hr" />
-      {orders.map((item, index) => {
+      {orders && orders.map((item, index) => {
         return (
           <div key={item.id}>
             <div className="order">

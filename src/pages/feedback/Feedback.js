@@ -23,7 +23,7 @@ const Feedback = () => {
     <div className="feedback-main">
       <h1>Feedback</h1>
       <div className="feedbacks">
-        {feedbacks.map((e) => (
+        {feedbacks && feedbacks.map((e) => (
           <IndividualFeedback key={e.id} e={e} />
         ))}
       </div>

@@ -96,7 +96,7 @@ const Home = () => {
         </RadioGroup>
       </FormControl>
       <div className="dash-items">
-        {data.map((e) => (
+        {data && data.map((e) => (
           <div key={e.id}>
             <Link to={`/hotel/${e.id}`}>
               <DashHotels

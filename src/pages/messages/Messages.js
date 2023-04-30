@@ -25,7 +25,7 @@ const Messages = () => {
     <div className="messages-main">
       <h1>Add Food Requests</h1>
       <div className="messages">
-        {requests.map((e) => (
+        {requests && requests.map((e) => (
           <IndividualMsg key={e.id} e={e} />
         ))}
       </div>
