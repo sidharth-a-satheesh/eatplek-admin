@@ -151,7 +151,6 @@ const AddFood = ({ trigger, setTrigger, id, name }) => {
                 label="Food Description"
                 variant="outlined"
                 name="description"
-                required
                 onChange={onInputChange}
               />
             </Box>

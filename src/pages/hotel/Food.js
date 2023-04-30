@@ -16,10 +16,11 @@ const Food = ({ name, cost, description, imgPath }) => {
         <div style={{ color: "navy" }}>Rs. {cost}</div>
       </div>
       <div className="food-description">
-        {readMore ? description : description.substring(0, 45) + "..."}
+        {description &&
+          (readMore ? description : description.substring(0, 45) + "...")}
       </div>
       <button className="read-more-btn" onClick={toggleBtn}>
-        {readMore ? "Read Less" : "Read More"}
+        {description && (readMore ? "Read Less" : "Read More")}
       </button>
     </div>
   );
