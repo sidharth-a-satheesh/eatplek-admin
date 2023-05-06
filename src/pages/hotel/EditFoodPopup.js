@@ -168,6 +168,7 @@ function EditHotelPopup({ id, trigger, setTrigger, editFood: food }) {
                   InputLabelProps={{ shrink: true }}
                   onChange={onInputChange}
                   name="is_veg"
+                  readOnly
                 >
                   <MenuItem value={true}>Veg</MenuItem>
                   <MenuItem value={false}>Non-Veg</MenuItem>
