@@ -20,6 +20,8 @@ function AddHotelPopup({ trigger, setTrigger }) {
   const [dineIn, setDineIn] = useState(false);
   const [takeAway, setTakeAway] = useState(false);
   const [veg, setVeg] = useState(false);
+  const [ac, setAc] = useState(false);
+  const [non_ac, setNonAc] = useState(false);
   const [submitBtn, setSubmitBtn] = useState(0);
   let [formData, setFormData] = useState({});
   let [days, setDays] = useState({
@@ -54,6 +56,8 @@ function AddHotelPopup({ trigger, setTrigger }) {
           username: `${user}`,
           password: `${pass}`,
           isveg: Boolean(veg),
+          ac: Boolean(ac),
+          non_ac: Boolean(non_ac),
           days_open: [
             ...(days.Mon ? ["Monday"] : []),
             ...(days.Tue ? ["Tuesday"] : []),
@@ -97,6 +101,14 @@ function AddHotelPopup({ trigger, setTrigger }) {
   const handleVeg = (e) => {
     setVeg(e.target.checked);
     console.log("Veg : " + e.target.checked);
+  };
+  const handleAc = (e) => {
+    setAc(e.target.checked);
+    console.log("AC : " + e.target.checked);
+  };
+  const handleNonAc = (e) => {
+    setNonAc(e.target.checked);
+    console.log("NON-AC : " + e.target.checked);
   };
   const handleTakeAway = (e) => {
     setTakeAway(e.target.checked);
@@ -293,6 +305,12 @@ function AddHotelPopup({ trigger, setTrigger }) {
             <Box ml={1}>
               <label htmlFor="">Veg</label>
               <Checkbox label={"veg"} checked={veg} onChange={handleVeg} />
+            </Box>
+            <Box ml={1}>
+              <label htmlFor="">AC</label>
+              <Checkbox label={"ac"} checked={ac} onChange={handleAc} />
+              <label htmlFor="">Non AC</label>
+              <Checkbox label={"non_ac"} checked={non_ac} onChange={handleNonAc} />
             </Box>
             <Box ml={1}>
               <Button type={"submit"} variant="contained">
