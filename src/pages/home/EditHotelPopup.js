@@ -49,13 +49,13 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
         image: hotel.image,
       });
       setDays({
-        Mon: findDay("Mon"),
-        Tue: findDay("Tue"),
-        Wed: findDay("Wed"),
-        Thu: findDay("Thu"),
-        Fri: findDay("Fri"),
-        Sat: findDay("Sat"),
-        Sun: findDay("Sun"),
+        Mon: findDay("Monday"),
+        Tue: findDay("Tuesday"),
+        Wed: findDay("Wednesday"),
+        Thu: findDay("Thursday"),
+        Fri: findDay("Friday"),
+        Sat: findDay("Saturday"),
+        Sun: findDay("Sunday"),
       });
       setDineIn(hotel.dine_in);
       setTakeAway(hotel.take_away);
@@ -80,13 +80,13 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
         take_away: Boolean(takeAway),
         isveg: Boolean(veg),
         days_open: [
-          ...(days.Mon ? ["Mon"] : []),
-          ...(days.Tue ? ["Tue"] : []),
-          ...(days.Wed ? ["Wed"] : []),
-          ...(days.Thu ? ["Thu"] : []),
-          ...(days.Fri ? ["Fri"] : []),
-          ...(days.Sat ? ["Sat"] : []),
-          ...(days.Sun ? ["Sun"] : []),
+          ...(days.Mon ? ["Monday"] : []),
+          ...(days.Tue ? ["Tuesday"] : []),
+          ...(days.Wed ? ["Wednesday"] : []),
+          ...(days.Thu ? ["Thursday"] : []),
+          ...(days.Fri ? ["Friday"] : []),
+          ...(days.Sat ? ["Saturday"] : []),
+          ...(days.Sun ? ["Sunday"] : []),
         ],
       },
       {
@@ -111,13 +111,13 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
         take_away: Boolean(takeAway),
         isveg: Boolean(veg),
         days_open: [
-          ...(days.Mon ? ["Mon"] : []),
-          ...(days.Tue ? ["Tue"] : []),
-          ...(days.Wed ? ["Wed"] : []),
-          ...(days.Thu ? ["Thu"] : []),
-          ...(days.Fri ? ["Fri"] : []),
-          ...(days.Sat ? ["Sat"] : []),
-          ...(days.Sun ? ["Sun"] : []),
+          ...(days.Mon ? ["Monday"] : []),
+          ...(days.Tue ? ["Tuesday"] : []),
+          ...(days.Wed ? ["Wednesday"] : []),
+          ...(days.Thu ? ["Thursday"] : []),
+          ...(days.Fri ? ["Friday"] : []),
+          ...(days.Sat ? ["Saturday"] : []),
+          ...(days.Sun ? ["Sunday"] : []),
         ],
       },
       {
