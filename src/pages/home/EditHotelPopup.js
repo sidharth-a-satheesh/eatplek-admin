@@ -24,6 +24,17 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
     Sat: false,
     Sun: false,
   });
+  const [ac, setAc] = useState(false);
+  const [non_ac, setNonAc] = useState(false);
+
+  const handleAc = (e) => {
+    setAc(e.target.checked);
+    console.log("AC : " + e.target.checked);
+  };
+  const handleNonAc = (e) => {
+    setNonAc(e.target.checked);
+    console.log("NON-AC : " + e.target.checked);
+  };
 
   let findDay = (day) => {
     for (let i = 0; i < hotel.days_open.length; i++) {
@@ -60,7 +71,10 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
       setDineIn(hotel.dine_in);
       setTakeAway(hotel.take_away);
       setVeg(hotel.isveg);
+      setAc(hotel.ac);
+      setNonAc(hotel.non_ac);
     }
+    console.log(hotel);
   }, [hotel]);
 
   useEffect(() => {
@@ -88,6 +102,8 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
           ...(days.Sat ? ["Saturday"] : []),
           ...(days.Sun ? ["Sunday"] : []),
         ],
+        ac: Boolean(ac),
+        non_ac: Boolean(non_ac),
       },
       {
         headers: {
@@ -103,9 +119,10 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
       "restaurant/" + hotel.id,
       {
         ...formData,
-        ...(formData && formData.maximum_no_of_guests && {
-          maximum_no_of_guests: Number(formData.maximum_no_of_guests),
-        }),
+        ...(formData &&
+          formData.maximum_no_of_guests && {
+            maximum_no_of_guests: Number(formData.maximum_no_of_guests),
+          }),
         image: `${image}`,
         dine_in: Boolean(dineIn),
         take_away: Boolean(takeAway),
@@ -119,6 +136,8 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
           ...(days.Sat ? ["Saturday"] : []),
           ...(days.Sun ? ["Sunday"] : []),
         ],
+        ac: Boolean(ac),
+        non_ac: Boolean(non_ac),
       },
       {
         headers: {
@@ -375,6 +394,17 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
               <label htmlFor="">Veg</label>
               <Checkbox label={"veg"} checked={veg} onChange={handleVeg} />
             </Box>
+            <Box ml={1}>
+              <label htmlFor="">AC</label>
+              <Checkbox label={"ac"} checked={ac} onChange={handleAc} />
+              <label htmlFor="">Non AC</label>
+              <Checkbox
+                label={"non_ac"}
+                checked={non_ac}
+                onChange={handleNonAc}
+              />
+            </Box>
+
             <Box ml={1}>
               <Button type={"submit"} variant="contained">
                 {submitBtn ? "Submitting..." : "Submit"}
