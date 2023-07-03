@@ -219,7 +219,7 @@ const AddFood = ({ trigger, setTrigger, id, name }) => {
             <Box m={2}>
               <label htmlFor="">Enter Food Image: </label>
               <input
-                // required
+                required
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
                 name="img"
