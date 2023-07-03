@@ -75,8 +75,38 @@ const AddFood = ({ trigger, setTrigger, id, name }) => {
   let onFormSubmit = async (e) => {
     e.preventDefault();
     setSubmitBtn(1);
-    let img = await fileUpload(imgData);
-    setImgData(img);
+    if (imgData) {
+      let img = await fileUpload(imgData);
+      setImgData(img);
+    } else {
+      let price = {};
+      if (formData.non_ac_price)
+        price["non_ac_price"] = Number(formData.non_ac_price);
+      if (formData.ac_price) price["ac_price"] = Number(formData.ac_price);
+      await apis.post(
+        "food",
+        {
+          ...formData,
+          ...price,
+          category_id: formData.category_id.substring(
+            0,
+            formData.category_id.indexOf(" ")
+          ),
+          category_name: formData.category_id.substring(
+            formData.category_id.indexOf(" ") + 1
+          ),
+          restaurant_id: id,
+          restaurant_name: name,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Token: localStorage.getItem("jwt_admin"),
+          },
+        }
+      );
+      window.location.reload();
+    }
   };
 
   return trigger ? (
@@ -189,7 +219,7 @@ const AddFood = ({ trigger, setTrigger, id, name }) => {
             <Box m={2}>
               <label htmlFor="">Enter Food Image: </label>
               <input
-                required
+                // required
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
                 name="img"
