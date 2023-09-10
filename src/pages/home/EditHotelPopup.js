@@ -48,6 +48,10 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
       setFormData({
         name: hotel.name,
         location: hotel.location,
+        geolocation:{
+          latitude: hotel.geolocation.latitude,
+          longitude: hotel.geolocation.longitude,
+        },
         phone: hotel.phone,
         email: hotel.email,
         password: hotel.password,
@@ -211,6 +215,7 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
                 InputLabelProps={{ shrink: true }}
               />
             </Box>
+            <div className="edit-hotel-loaction">
             <Box m={1}>
               <TextField
                 type={"text"}
@@ -224,6 +229,34 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
                 InputLabelProps={{ shrink: true }}
               />
             </Box>
+            <Box m={1}>
+              <TextField
+                type={"text"}
+                fullWidth
+                id="add-hotel-latitude"
+                label="Latitude"
+                variant="outlined"
+                name="latitude"
+                onChange={onInputChange}
+                defaultValue={hotel.geolocation.latitude}
+                InputLabelProps={{ shrink: true }}
+              />
+            </Box>
+            <Box m={1}>
+              <TextField
+                type={"text"}
+                fullWidth
+                id="add-hotel-longitude"
+                label="Longitude"
+                variant="outlined"
+                name="longitude"
+                onChange={onInputChange}
+                defaultValue={hotel.geolocation.longitude}
+                InputLabelProps={{ shrink: true }}
+              />
+            </Box>
+
+            </div>
             <Box m={1}>
               <TextField
                 type={"text"}

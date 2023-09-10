@@ -23,6 +23,8 @@ function AddHotelPopup({ trigger, setTrigger }) {
   const [ac, setAc] = useState(false);
   const [non_ac, setNonAc] = useState(false);
   const [submitBtn, setSubmitBtn] = useState(0);
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
   let [formData, setFormData] = useState({});
   let [days, setDays] = useState({
     Mon: false,
@@ -48,6 +50,10 @@ function AddHotelPopup({ trigger, setTrigger }) {
           email: email,
           name: `${name}`,
           location: `${location}`,
+          geo_location:{
+            latitude: `${parseFloat(latitude)}`,
+            longitude:`${parseFloat(longitude)}`
+          },
           phone: `${number}`,
           type: `${foodType}`,
           image: `${image}`,
@@ -75,7 +81,9 @@ function AddHotelPopup({ trigger, setTrigger }) {
           },
         }
       );
-      window.location.reload(true);
+      console.log(typeof latitude)
+      console.log(typeof parseFloat(longitude))
+      // window.location.reload(true);
     }
   };
 
@@ -114,6 +122,10 @@ function AddHotelPopup({ trigger, setTrigger }) {
     setTakeAway(e.target.checked);
     console.log("Take Away : " + e.target.checked);
   };
+  // const handleLatitude = (e) => {
+  //   setLatitude(e.target.value);
+  //   console.log("Latitude : " + latitude);
+  // };
 
   return trigger ? (
     <div className="add-hotels-popup-main">
@@ -139,6 +151,7 @@ function AddHotelPopup({ trigger, setTrigger }) {
                 onChange={(e) => setName(e.target.value)}
               />
             </Box>
+            <div className="add-hotel-loaction">
             <Box m={1}>
               <TextField
                 type={"text"}
@@ -151,6 +164,33 @@ function AddHotelPopup({ trigger, setTrigger }) {
                 onChange={(e) => setLocation(e.target.value)}
               />
             </Box>
+            <Box m={1}>
+              <TextField
+                type={"number"}
+                required
+                fullWidth
+                id="add-hotel-latitude"
+                label="Latitude"
+                variant="outlined"
+                value={latitude}
+                onChange={(e) => setLatitude(e.target.value)}
+                // onChange={handleLatitude}
+              />
+            </Box>
+            <Box m={1}>
+              <TextField
+                type={"number"}
+                required
+                fullWidth
+                id="add-hotel-longitude"
+                label="Longitude"
+                variant="outlined"
+                value={longitude}
+                onChange={(e) => setLongitude(e.target.value)}
+              />
+            </Box>
+
+            </div>
             <Box m={1}>
               <TextField
                 type={"text"}
@@ -167,7 +207,7 @@ function AddHotelPopup({ trigger, setTrigger }) {
             <div className="add-hotel-username-pass">
               <Box m={1}>
                 <TextField
-                  type={"text"}
+                  type={"number"}
                   required
                   fullWidth
                   id="add-hotel-number"

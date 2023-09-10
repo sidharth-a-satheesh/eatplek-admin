@@ -27,6 +27,11 @@
             right: 2%;
             cursor: pointer;
         }
+        .add-hotel-loaction{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            justify-content: center;
+        }
         .add-hotel-username-pass{
             display: grid;
             grid-template-columns: repeat(2,1fr);
