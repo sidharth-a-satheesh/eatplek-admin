@@ -48,10 +48,8 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
       setFormData({
         name: hotel.name,
         location: hotel.location,
-        geolocation:{
-          latitude: hotel.geolocation.latitude,
-          longitude: hotel.geolocation.longitude,
-        },
+        latitude: hotel.geo_location?.latitude,
+        longitude: hotel.geo_location?.longitude,
         phone: hotel.phone,
         email: hotel.email,
         password: hotel.password,
@@ -86,6 +84,7 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
   }, [image]);
 
   let post1 = async () => {
+    // console.log(typeof formData.latitude);
     await apis.put(
       "restaurant/" + hotel.id,
       {
@@ -94,6 +93,10 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
           formData.maximum_no_of_guests && {
             maximum_no_of_guests: Number(formData.maximum_no_of_guests),
           }),
+        geo_location: {
+          latitude: `${formData.latitude}`,
+          longitude: `${formData.longitude}`,
+        },
         dine_in: Boolean(dineIn),
         take_away: Boolean(takeAway),
         isveg: Boolean(veg),
@@ -131,6 +134,10 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
         dine_in: Boolean(dineIn),
         take_away: Boolean(takeAway),
         isveg: Boolean(veg),
+        geo_location: {
+          latitude: `${formData.latitude}`,
+          longitude: `${formData.longitude}`,
+        },
         days_open: [
           ...(days.Mon ? ["Monday"] : []),
           ...(days.Tue ? ["Tuesday"] : []),
@@ -216,46 +223,47 @@ function EditHotelPopup({ trigger, setTrigger, hotel }) {
               />
             </Box>
             <div className="edit-hotel-loaction">
-            <Box m={1}>
-              <TextField
-                type={"text"}
-                fullWidth
-                id="add-hotel-location"
-                label="Location"
-                variant="outlined"
-                name="location"
-                onChange={onInputChange}
-                defaultValue={hotel.location}
-                InputLabelProps={{ shrink: true }}
-              />
-            </Box>
-            <Box m={1}>
-              <TextField
-                type={"text"}
-                fullWidth
-                id="add-hotel-latitude"
-                label="Latitude"
-                variant="outlined"
-                name="latitude"
-                onChange={onInputChange}
-                defaultValue={hotel.geolocation.latitude}
-                InputLabelProps={{ shrink: true }}
-              />
-            </Box>
-            <Box m={1}>
-              <TextField
-                type={"text"}
-                fullWidth
-                id="add-hotel-longitude"
-                label="Longitude"
-                variant="outlined"
-                name="longitude"
-                onChange={onInputChange}
-                defaultValue={hotel.geolocation.longitude}
-                InputLabelProps={{ shrink: true }}
-              />
-            </Box>
-
+              <Box m={1}>
+                <TextField
+                  type={"text"}
+                  fullWidth
+                  id="add-hotel-location"
+                  label="Location"
+                  variant="outlined"
+                  name="location"
+                  onChange={onInputChange}
+                  defaultValue={hotel.location}
+                  InputLabelProps={{ shrink: true }}
+                />
+              </Box>
+              <Box m={1}>
+                <TextField
+                  type={"number"}
+                  inputProps={{ step: "any" }}
+                  fullWidth
+                  id="add-hotel-latitude"
+                  label="Latitude"
+                  variant="outlined"
+                  name="latitude"
+                  onChange={onInputChange}
+                  defaultValue={Number(hotel.geo_location?.latitude)}
+                  InputLabelProps={{ shrink: true }}
+                />
+              </Box>
+              <Box m={1}>
+                <TextField
+                  type={"number"}
+                  inputProps={{ step: "any" }}
+                  fullWidth
+                  id="add-hotel-longitude"
+                  label="Longitude"
+                  variant="outlined"
+                  name="longitude"
+                  onChange={onInputChange}
+                  defaultValue={Number(hotel.geo_location?.longitude)}
+                  InputLabelProps={{ shrink: true }}
+                />
+              </Box>
             </div>
             <Box m={1}>
               <TextField

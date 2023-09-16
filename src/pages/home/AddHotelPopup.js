@@ -22,7 +22,7 @@ function AddHotelPopup({ trigger, setTrigger }) {
   const [veg, setVeg] = useState(false);
   const [ac, setAc] = useState(false);
   const [non_ac, setNonAc] = useState(false);
-  const [submitBtn, setSubmitBtn] = useState(0);
+  const [submitBtn, setSubmitBtn] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   let [formData, setFormData] = useState({});
@@ -42,6 +42,7 @@ function AddHotelPopup({ trigger, setTrigger }) {
 
   let myWait = async () => {
     if (typeof image == "string") {
+      // console.log(latitude);
       await apis.post(
         "restaurant",
         {
@@ -51,8 +52,8 @@ function AddHotelPopup({ trigger, setTrigger }) {
           name: `${name}`,
           location: `${location}`,
           geo_location:{
-            latitude: `${parseFloat(latitude)}`,
-            longitude:`${parseFloat(longitude)}`
+            latitude: `${latitude}`,
+            longitude:`${longitude}`
           },
           phone: `${number}`,
           type: `${foodType}`,
@@ -81,9 +82,9 @@ function AddHotelPopup({ trigger, setTrigger }) {
           },
         }
       );
-      console.log(typeof latitude)
-      console.log(typeof parseFloat(longitude))
-      // window.location.reload(true);
+      // console.log(typeof latitude)
+      // console.log(typeof parseFloat(longitude))
+      window.location.reload(true);
     }
   };
 
